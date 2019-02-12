@@ -1,0 +1,39 @@
+{
+	"private": true,
+	"name": "@smotaal/public",
+	"description": "www.smotaal.io",
+	"version": "0.0.0-alpha.1",
+	"license": "MIT",
+	"exports": {},
+	"scripts": {
+		"serve": "http-server --cors -s",
+		"bundle": "rollup -c rollup.config.js",
+		"relink": "nex tasks/relink.js",
+		"postinstall": "relink",
+		"quench": "pushd quench && yarn"
+	},
+	"dependencies": {
+		"@types/node": "*",
+		"http-server": "*",
+		"prettier": "*",
+		"rollup": "*",
+		"typescript": "*"
+	},
+	"devDependencies": {
+		"@esm": "../@esm"
+	},
+	"workspaces": {
+		"packages": [
+			"../components",
+			"../markup",
+			"../pholio",
+			"../quench"
+		],
+		"nohoist": [
+			"**/components",
+			"**/markup",
+			"**/pholio",
+			"**/quench"
+		]
+	}
+}
