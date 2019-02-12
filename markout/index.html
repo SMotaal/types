@@ -5,18 +5,19 @@
 		<base href="/" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-		<link rel="preload" as="style" href="/pholio/styles/styles.css" />
-		<link rel="preload" as="style" href="/pholio/styles/typography.css" />
-		<link rel="preload" as="style" href="/pholio/styles/layouts/grids.css" />
-		<link rel="preload" as="style" href="/pholio/styles/common.css" />
-		<link rel="preload" as="style" href="/pholio/styles/markdown.css" />
-		<link rel="preload" as="style" href="/pholio/styles/markup.css" />
+		<link rel="preload" as="style" href="../pholio/styles/styles.css" />
+		<link rel="preload" as="style" href="../pholio/styles/typography.css" />
+		<link rel="preload" as="style" href="../pholio/styles/layouts/grids.css" />
+		<link rel="preload" as="style" href="../pholio/styles/common.css" />
+		<link rel="preload" as="style" href="../pholio/styles/markdown.css" />
+		<link rel="preload" as="style" href="../pholio/styles/markup.css" />
 		<style>
-			@import '/pholio/styles/styles.css';
+			@import '../pholio/styles/styles.css';
 
 			html {
 				--shade: #aabbccf6;
 			}
+
 			html,
 			body,
 			body > main {
@@ -24,10 +25,12 @@
 				box-sizing: border-box;
 				margin: 0;
 			}
+
 			body > main > script,
 			body > main > style {
 				display: none;
 			}
+
 			body > main > markout-content {
 				opacity: 1;
 				background-color: #fffffff6;
@@ -39,12 +42,13 @@
 			document
 				.querySelector('markout-content')
 				.setAttribute('src', location.hash ? location.hash.slice(1) : '/markout/README.md');
-			// import('/quench/dist/markout.standalone.js');
-			// import('/quench/dist/markout.m.js');
-			import('/quench/lib/browser/markout.js');
+
+			import(`../quench/${/^\?dev\b|\&dev\b/i.test(location.search) ? 'lib/browser/markout.js' : 'dist/markout.m.js'}`);
+
 			addEventListener('hashchange', () => location.reload());
 		</script>
 	</head>
+
 	<body>
 		<main>
 			<markout-content></markout-content>
