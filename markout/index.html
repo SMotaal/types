@@ -39,9 +39,12 @@
 			}
 		</style>
 		<script type="module">
-			document
-				.querySelector('markout-content')
-				.setAttribute('src', location.hash ? location.hash.slice(1) : '/markout/README.md');
+			const src = location.hash ? location.hash.slice(1) : '/markout/README.md';
+			const title = src.replace(/(.*?)((?:[^/]+?[/]?){1,2})(?:\..*|)$/, '$2');
+
+			title && (document.title = `${title} — Markout`);
+
+			document.querySelector('markout-content').setAttribute('src', src);
 
 			import(`../quench/${/^\?dev\b|\&dev\b/i.test(location.search) ? 'lib/browser/markout.js' : 'dist/markout.m.js'}`);
 
