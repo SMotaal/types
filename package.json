@@ -9,7 +9,8 @@
 		"serve": "http-server --cors -s",
 		"bundle": "rollup -c rollup.config.js",
 		"relink": "nex tasks/relink.js",
-		"postinstall": "relink",
+		"postinstall": "yarn relink",
+		"pholio": "pushd pholio && yarn",
 		"quench": "pushd quench && yarn"
 	},
 	"dependencies": {
