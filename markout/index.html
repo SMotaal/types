@@ -15,7 +15,7 @@
 			@import '../pholio/styles/styles.css';
 
 			html {
-				--shade: #aabbccf6;
+				--shade: #6699aaf6;
 			}
 
 			html,
@@ -34,11 +34,12 @@
 			body > main > markout-content {
 				opacity: 1;
 				background-color: #fffffff6;
-				box-shadow: 0 1px 15px -5px #000;
+				box-shadow: 0 1px 20px -10px #000;
 				box-sizing: initial;
 			}
 		</style>
 		<script type="module">
+			import {dynamicImport} from '../pholio/lib/import.js';
 			const src = location.hash ? location.hash.slice(1) : '/markout/README.md';
 			const title = src.replace(/(.*?)((?:[^/]+?[/]?){1,2})(?:\..*|)$/, '$2');
 
@@ -46,7 +47,10 @@
 
 			document.querySelector('markout-content').setAttribute('src', src);
 
-			import(`../quench/${/^\?dev\b|\&dev\b/i.test(location.search) ? 'lib/browser/markout.js' : 'dist/markout.m.js'}`);
+			dynamicImport(
+				`../quench/${/^\?dev\b|\&dev\b/i.test(location.search) ? 'lib/browser/markout.js' : 'dist/markout.m.js'}`,
+				import.meta.url
+			);
 
 			addEventListener('hashchange', () => location.reload());
 		</script>
