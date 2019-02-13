@@ -24,5 +24,8 @@
 		"markup": true,
 		"pholio": true,
 		"quench": true
-	}
+	},
+	"cSpell.words": [
+		"interop"
+	]
 }
