@@ -11,7 +11,7 @@
 		"noEmit": true,
 		"preserveWatchOutput": false
 	},
-	"include": ["*/types.d.ts", "**/*.js"],
+	"include": ["**/*.js"],
 	"exclude": [
 		"node_modules",
 		"trash",

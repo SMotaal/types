@@ -1,37 +1,50 @@
 {
 	"private": true,
-	"name": "@smotaal/public",
-	"description": "www.smotaal.io",
-	"version": "0.0.0-alpha.1",
+	"name": "@smotaal/smotaal.github.io",
+	"description": "smotaal.io",
+	"version": "0.0.0-alpha.2",
+	"author": "Saleh Abdel Motaal <saleh@grasppe.com>",
+	"repository": "https://github.com/SMotaal/smotaal.github.io.git",
 	"license": "MIT",
+	"type": "module",
 	"exports": {},
 	"scripts": {
 		"serve": "http-server --cors -s",
 		"bundle": "rollup -c rollup.config.js",
 		"relink": "nex tasks/relink.js",
-		"postinstall": "yarn relink",
-		"experimental": "pushd experimental && yarn",
-		"pholio": "pushd pholio && yarn",
-		"quench": "pushd quench && yarn"
+		"components": "[ -d ../components ] && pushd ../components && yarn",
+		"experimental": "[ -d ../experimental ] && pushd ../experimental && yarn",
+		"markup": "[ -d ../markup ] && pushd ../markup && yarn",
+		"pholio": "[ -d ../pholio ] && pushd ../pholio && yarn",
+		"quench": "[ -d ../quench ] && pushd ../quench && yarn"
 	},
-	"dependencies": {
+	"devDependencies": {
 		"@types/node": "*",
 		"http-server": "*",
 		"prettier": "*",
 		"rollup": "*",
-		"typescript": "*"
+		"typescript": "*",
+		"@smotaal/esm": "SMotaal/esm"
 	},
-	"devDependencies": {
-		"@esm": "../@esm"
+	"resolutions": {
+		"@smotaal/esm": "../esm",
+		"SMotaal/components": "../components",
+		"SMotaal/esm": "../esm",
+		"SMotaal/experimental": "../experimental",
+		"SMotaal/markup": "../markup",
+		"SMotaal/pholio": "../pholio",
+		"SMotaal/quench": "../quench"
 	},
 	"workspaces": {
 		"packages": [
+			"../experimental",
 			"../components",
 			"../markup",
 			"../pholio",
 			"../quench"
 		],
 		"nohoist": [
+			"**/experimental",
 			"**/components",
 			"**/markup",
 			"**/pholio",
