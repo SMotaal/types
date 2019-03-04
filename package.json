@@ -10,7 +10,6 @@
 	"exports": {},
 	"scripts": {
 		"serve": "http-server --cors -s -P https://www.smotaal.io/",
-		"bundle": "rollup -c rollup.config.js",
 		"relink": "nex tasks/relink.js",
 		"nes": "pushd $INIT_CWD && nes"
 	},
