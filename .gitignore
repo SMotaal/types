@@ -3,13 +3,14 @@
 trash/
 /components/
 /esm/
-/helpers/
-/pholio/
-/markup/
-/quench/
-/esm/
 /experimental/
-/experimental-modules/
+/helpers/
+/markup/
+/pholio/
+/quench/
+/package-lock.json
+/yarn.lock
+/yarn-error.log
 
 # Logs
 
@@ -90,9 +91,3 @@ typings/
 # next.js build output
 
 .next
-components
-esm
-experimental
-markup
-pholio
-quench
