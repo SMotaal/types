@@ -1,45 +1,47 @@
 # smotaal.io
 
-Open-source is a notion that has made it so we can all flourish!
+## Projects
 
-## Publishing
+- **[`smotaal.io`](./)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/ "SMotaal/smotaal.github.io")
 
-- This repo serves directly to www.smotaal.io:
+  - **[`components`](/components)** [<kbd>github</kbd>](https://github.com/SMotaal/components/ "SMotaal/components")
 
-  - ./markout -> www.smotaal.io/markout
+  - **[`esm`](/esm)** [<kbd>github</kbd>](https://github.com/SMotaal/esm/ "SMotaal/esm")
 
-- Other repos serve directly serve subfolders to www.smotaal.io:
+  - **[`experimental`](/experimental)** [<kbd>github</kbd>](https://github.com/SMotaal/experimental/ "SMotaal/experimental")
 
-  - SMotaal/components -> www.smotaal.io/components
-  - SMotaal/pholio -> www.smotaal.io/pholio
-  - SMotaal/markup -> www.smotaal.io/markup
-  - SMotaal/quench -> www.smotaal.io/quench
+  - **[`markup`](/markup)** [<kbd>github</kbd>](https://github.com/SMotaal/markup/ "SMotaal/markup")
 
-- Other repos serve directly serve subdomains to smotaal.io:
-  - SMotaal/experimental -> experimental.smotaal.io
+  - **[`markout`](/markout)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/tree/master/packages/markout/ "SMotaal/smotaal.github.io")
 
-## Development
+  - **[`pholio`](/pholio)** [<kbd>github</kbd>](https://github.com/SMotaal/pholio/ "SMotaal/pholio")
 
-**Without `install`**
+  - **[`quench`](/quench)** [<kbd>github</kbd>](https://github.com/SMotaal/quench/ "SMotaal/quench")
 
-This mimics closer to reality.
-
-1. Clone the repo locally
-2. Clone other repo(s) you need into their respective folder
-3. Run `npx http-server --cors -s -P https://www.smotaal.io/`
-
-**With `install`**
-
-This will install node_modules dependencies.
-
-1. Clone the repo locally
-2. Clone other repo(s) if applicable into ./packages
-3. Run `npm install`
-4. Run `npm run relink`
-5. Run `npm run serve`
+---
 
 ## Changes
 
 - `0.0.0-alpha.3` Using flat structure with `http-server` proxy
 - `0.0.0-alpha.2` Using `yarn` workspaces to `../`
 - `0.0.0-alpha.0` Using symbolic links to `node_moudles/@smotaal`
+
+---
+
+## Development
+
+### Serving locally (using `http-server`)
+
+#### A. Using `npx` without dependencies <kbd>recommended</kbd>
+
+1. Clone the repo locally
+2. Clone other repo(s) you need into their respective folder
+3. Run `npx http-server --cors -s -P https://www.smotaal.io/`
+
+#### B. Using `npm install` or `yarn` with dependencies
+
+1. Clone the repo locally
+2. Clone other repo(s) if applicable into ./packages
+3. Run `npm install`
+4. Run `npm run relink`
+5. Run `npm run serve`
