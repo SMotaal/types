@@ -1,49 +1,84 @@
 ﻿/// <reference types="node" />
 
-(async () => {
-	const {existsSync, symlinkSync, readdirSync, statSync, readlinkSync} = await import('fs');
-	// const {createRequireFromPath} = await import('module');
+import {exists, symlink, readdir, linked, unlink} from './lib/fs.js';
 
-	const root = new URL('../', import.meta.url).pathname;
-	const modules = `${root}node_modules/@smotaal/`;
-	// const require = createRequireFromPath(root);
-	const task = 'relink';
+export async function relink({scope, name, target, force = true}) {
+	const parameters = arguments[0];
+	const link = `${scope}${name}`;
+	let wasLinked, error, wasFound;
 
-	const isLink = path => {
-		try {
-			readlinkSync(path);
-			return true;
-		} catch (exception) {
-			return false;
+	const absolute = new URL(target, `file://${scope}`).pathname;
+	const relative = absolute.startsWith(scope) ? absolute.replace(scope, './') : undefined;
+
+	target = relative || absolute;
+
+	// console.log({parameters, link, absolute, relative, target});
+
+	try {
+		if ((wasFound = await exists(absolute))) {
+			const alreadyExists = await exists(link);
+			let currentLink = alreadyExists && (await linked(link));
+			const canLink = !alreadyExists || currentLink !== false;
+			const shouldRelink = currentLink && currentLink !== target;
+			const canRelink = !!force;
+
+			if (canLink) {
+				if (currentLink) {
+					if (canRelink) {
+						currentLink = void (await unlink(link));
+					} else if (shouldRelink) {
+						error = new ReferenceError(
+							`Error — path already exists and is linked to "${currentLink}" instead of "${target}"`,
+						);
+					}
+				}
+				if (!currentLink) {
+					await symlink(target, link);
+					wasLinked = true;
+				}
+			} else if (alreadyExists && !canLink) {
+				error = new ReferenceError(`Error — path already exists and is not a link`);
+			}
 		}
-	};
-
-	for (const name of readdirSync(modules)) {
-		if (name.startsWith('.')) continue;
-
-		const link = `${root}${name}`;
-		const module = `${modules}${name}`;
-		const target = module.replace(root, './');
-		const installed = existsSync(module);
-		const exists = existsSync(link);
-		const linked = exists && isLink(link);
-		if (exists && !linked) {
-			console.warn('[%s]: %O [%s]', task, `./${name}`, `Error — path already exists and is not a link`);
-		} else if (linked) {
-			console.log('[%s]: %O -> %O [%s]', task, `./${name}`, target, installed ? '√' : 'Not Installed');
-		} else {
-			symlinkSync(target, link);
-			console.log('[%s]: %O -> %O [%s]', task, `./${name}`, target, installed ? 'Linked' : 'Not Installed');
-		}
+	} catch (exception) {
+		error = exception;
 	}
 
-	// const require = createRequireFunction
+	return {name, link, module: target, target: target, wasLinked, error, wasFound};
+}
 
-	// // const [, root, slash, base] = __dirname.match(/(.+)([\\/])(.+?)\2scripts\2?$/);
-	// const modules = 'node_modules';
-	// {
-	//   const link = `${root}${slash}${modules}`;
-	//   const target = `.${slash}${base}${slash}${modules}`;
-	//   existsSync(link) || symlinkSync(target, link, 'dir');
-	// }
+(async () => {
+	const task = 'relink';
+	const scope = `${process.cwd()}/`;
+	const modules = `${scope}node_modules/@smotaal/`;
+
+	const {log, warn, group, groupEnd} = console;
+
+	group('[%s]: %s', task, scope.replace(/^.*?(\/).*?\busers?\1.+?\1/i, '~$1'));
+
+	try {
+		OP: {
+			const tasks = [];
+
+			for (const name of await readdir(modules)) {
+				name.startsWith('.') || tasks.push(relink({name, target: `${modules}${name}`, scope}));
+			}
+
+			const result = await Promise.all(tasks);
+
+			for (const {name, error, wasFound, wasLinked, target} of result) {
+				log();
+				group('%O [%s]', name, error ? 'error' : !wasFound ? 'skipped' : wasLinked ? 'relinked' : 'unchanged');
+				error ? warn(error) : target && log('-> %O', target);
+				groupEnd();
+			}
+
+			log();
+		}
+	} catch (exception) {
+		warn(exception);
+	} finally {
+		groupEnd();
+	}
 })();
+
