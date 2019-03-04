@@ -12,6 +12,7 @@
 		"serve": "http-server --cors -s",
 		"bundle": "rollup -c rollup.config.js",
 		"relink": "nex tasks/relink.js",
+		"nes": "pushd $INIT_CWD && nes",
 		"components": "[ -d ../components ] && pushd ../components && yarn",
 		"experimental": "[ -d ../experimental ] && pushd ../experimental && yarn",
 		"markup": "[ -d ../markup ] && pushd ../markup && yarn",
@@ -27,7 +28,6 @@
 		"@smotaal/esm": "SMotaal/esm"
 	},
 	"resolutions": {
-		"@smotaal/esm": "../esm",
 		"SMotaal/components": "../components",
 		"SMotaal/esm": "../esm",
 		"SMotaal/experimental": "../experimental",
@@ -41,13 +41,15 @@
 			"../components",
 			"../markup",
 			"../pholio",
+			"../server",
 			"../quench"
 		],
 		"nohoist": [
-			"**/experimental",
 			"**/components",
+			"**/experimental",
 			"**/markup",
 			"**/pholio",
+			"**/server",
 			"**/quench"
 		]
 	}

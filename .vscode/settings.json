@@ -7,6 +7,8 @@
 		"**/dist": true,
 		"[more]": true,
 		"components": true,
+		"esm": true,
+		"experimental": true,
 		"markup": true,
 		"pholio": true,
 		"quench": true
@@ -21,11 +23,15 @@
 		"**/dist": true,
 		"[more]": true,
 		"components": true,
+		"esm": true,
+		"experimental": true,
 		"markup": true,
 		"pholio": true,
 		"quench": true
 	},
-	"cSpell.words": [
-		"interop"
-	]
+	"cSpell.words": ["interop"],
+	"cSpell.enabled": true,
+	"cSpell.enabledLanguageIds": ["html", "markdown"],
+	"cSpell.showStatus": true,
+	"cSpell.language": "en"
 }
