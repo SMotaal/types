@@ -2,6 +2,41 @@
 
 import {exists, symlink, readdir, linked, unlink} from './lib/fs.js';
 
+(async () => {
+	const task = 'relink';
+	const scope = `${process.cwd()}/`;
+	const modules = `${scope}packages/`;
+
+	const {log, warn, group, groupEnd} = console;
+
+	group('[%s]: %s', task, scope.replace(/^.*?(\/).*?\busers?\1.+?\1/i, '~$1'));
+
+	try {
+		OP: {
+			const tasks = [];
+
+			for (const name of await readdir(modules)) {
+				name.startsWith('.') || tasks.push(relink({name, target: `${modules}${name}`, scope}));
+			}
+
+			const result = await Promise.all(tasks);
+
+			for (const {name, error, wasFound, wasLinked, target} of result) {
+				log();
+				group('%O [%s]', name, error ? 'error' : !wasFound ? 'skipped' : wasLinked ? 'relinked' : 'unchanged');
+				error ? warn(error) : target && log('-> %O', target);
+				groupEnd();
+			}
+
+			log();
+		}
+	} catch (exception) {
+		warn(exception);
+	} finally {
+		groupEnd();
+	}
+})();
+
 export async function relink({scope, name, target, force = true}) {
 	const parameters = arguments[0];
 	const link = `${scope}${name}`;
@@ -46,39 +81,3 @@ export async function relink({scope, name, target, force = true}) {
 
 	return {name, link, module: target, target: target, wasLinked, error, wasFound};
 }
-
-(async () => {
-	const task = 'relink';
-	const scope = `${process.cwd()}/`;
-	const modules = `${scope}node_modules/@smotaal/`;
-
-	const {log, warn, group, groupEnd} = console;
-
-	group('[%s]: %s', task, scope.replace(/^.*?(\/).*?\busers?\1.+?\1/i, '~$1'));
-
-	try {
-		OP: {
-			const tasks = [];
-
-			for (const name of await readdir(modules)) {
-				name.startsWith('.') || tasks.push(relink({name, target: `${modules}${name}`, scope}));
-			}
-
-			const result = await Promise.all(tasks);
-
-			for (const {name, error, wasFound, wasLinked, target} of result) {
-				log();
-				group('%O [%s]', name, error ? 'error' : !wasFound ? 'skipped' : wasLinked ? 'relinked' : 'unchanged');
-				error ? warn(error) : target && log('-> %O', target);
-				groupEnd();
-			}
-
-			log();
-		}
-	} catch (exception) {
-		warn(exception);
-	} finally {
-		groupEnd();
-	}
-})();
-
