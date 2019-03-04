@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html checkerboard>
+<html>
   <head>
     <title>Markout</title>
     <meta charset="utf-8" />
@@ -14,6 +14,10 @@
 
       html {
         --shade: #6699aaf6;
+      }
+
+      html:not([checkerboard]) {
+        background: var(--shade, #EEE);
       }
 
 			body > main > * {
