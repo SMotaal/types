@@ -9,6 +9,7 @@
 	"type": "module",
 	"exports": {},
 	"scripts": {
+		"start": "npx http-server --cors -s -P https://www.smotaal.io/",
 		"serve": "http-server --cors -s -P https://www.smotaal.io/",
 		"relink": "nex tasks/relink.js",
 		"nes": "pushd $INIT_CWD && nes"
