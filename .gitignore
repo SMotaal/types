@@ -1,17 +1,16 @@
 # Project-specific files
 
 trash/
-/components/
-/console/
-/esm/
-/experimental/
-/helpers/
-/markup/
-/pholio/
-/quench/
-/package-lock.json
-/yarn.lock
-/yarn-error.log
+components/
+console/
+esm/
+experimental/
+helpers/
+markup/
+pholio/
+quench/
+package-lock.json
+yarn.lock
 
 # Logs
 
