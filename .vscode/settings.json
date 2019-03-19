@@ -33,5 +33,10 @@
 	"cSpell.enabled": true,
 	"cSpell.enabledLanguageIds": ["html", "markdown"],
 	"cSpell.showStatus": true,
-	"cSpell.language": "en"
+	"cSpell.language": "en",
+	"files.associations": {
+		"*.mo": "markdown",
+		"*.mout": "markdown",
+		"*.markout": "markdown"
+	}
 }
