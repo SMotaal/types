@@ -23,11 +23,27 @@
 		"@smotaal/esm": "SMotaal/esm"
 	},
 	"resolutions": {
-		"SMotaal/components": "./components",
 		"SMotaal/esm": "./esm",
+		"SMotaal/markup": "./markup"
+	},
+	"projects": {
+		"SMotaal/components": "./components",
 		"SMotaal/experimental": "./experimental",
 		"SMotaal/markup": "./markup",
+		"SMotaal/markout": "./markout",
 		"SMotaal/pholio": "./pholio",
 		"SMotaal/quench": "./quench"
+	},
+	"workspaces": {
+		"packages": [
+			"components",
+			"console",
+			"esm",
+			"experimental",
+			"markout",
+			"markup",
+			"pholio",
+			"quench"
+		]
 	}
 }
