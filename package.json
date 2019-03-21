@@ -12,7 +12,8 @@
 		"start": "npx http-server --cors -s -P https://www.smotaal.io/",
 		"serve": "http-server --cors -s -P https://www.smotaal.io/",
 		"relink": "nex tasks/relink.js",
-		"nes": "pushd $INIT_CWD && nes"
+		"nes": "pushd $INIT_CWD && nes",
+		"xcode-install": "xcode-select --install"
 	},
 	"devDependencies": {
 		"@types/node": "*",
@@ -24,13 +25,15 @@
 	},
 	"resolutions": {
 		"SMotaal/esm": "./esm",
-		"SMotaal/markup": "./markup"
+		"SMotaal/markup": "./markup",
+		"@smotaal/tokenizer": "./markup/packages/@smotaal/tokenizer",
+		"pseudom": "./markup/packages/pseudom"
 	},
 	"projects": {
 		"SMotaal/components": "./components",
 		"SMotaal/experimental": "./experimental",
 		"SMotaal/markup": "./markup",
-		"SMotaal/markout": "./markout",
+		"SMotaal/markout": "./packages/markout",
 		"SMotaal/pholio": "./pholio",
 		"SMotaal/quench": "./quench"
 	},
@@ -40,10 +43,17 @@
 			"console",
 			"esm",
 			"experimental",
-			"markout",
+			"packages/markout",
 			"markup",
 			"pholio",
 			"quench"
+		],
+		"exclude": [
+			"markup/packages/@smotaal/tokenizer",
+			"markup/packages/pseudom"
+		],
+		"nohoist": [
+			"**/pseudom"
 		]
 	}
 }
