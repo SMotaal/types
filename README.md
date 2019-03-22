@@ -2,21 +2,21 @@
 
 ## Projects
 
-- **[`smotaal.io`](./)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/ "SMotaal/smotaal.github.io")
+- **[`smotaal.io`](./index.html)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/ 'SMotaal/smotaal.github.io')
 
-  - **[`components`](/components)** [<kbd>github</kbd>](https://github.com/SMotaal/components/ "SMotaal/components")
+  - **[`components`](/components/README)** [<kbd>github</kbd>](https://github.com/SMotaal/components/ 'SMotaal/components')
 
-  - **[`esm`](/esm)** [<kbd>github</kbd>](https://github.com/SMotaal/esm/ "SMotaal/esm")
+  - **[`esm`](/esm/README)** [<kbd>github</kbd>](https://github.com/SMotaal/esm/ 'SMotaal/esm')
 
-  - **[`experimental`](/experimental)** [<kbd>github</kbd>](https://github.com/SMotaal/experimental/ "SMotaal/experimental")
+  - **[`experimental`](/experimental/README)** [<kbd>github</kbd>](https://github.com/SMotaal/experimental/ 'SMotaal/experimental')
 
-  - **[`markup`](/markup)** [<kbd>github</kbd>](https://github.com/SMotaal/markup/ "SMotaal/markup")
+  - **[`markup`](/markup/)** [<kbd>github</kbd>](https://github.com/SMotaal/markup/ 'SMotaal/markup')
 
-  - **[`markout`](/markout)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/tree/master/packages/markout/ "SMotaal/smotaal.github.io")
+  - **[`markout`](/markout/)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/tree/master/packages/markout/ 'SMotaal/smotaal.github.io')
 
-  - **[`pholio`](/pholio)** [<kbd>github</kbd>](https://github.com/SMotaal/pholio/ "SMotaal/pholio")
+  - **[`pholio`](/pholio/)** [<kbd>github</kbd>](https://github.com/SMotaal/pholio/ 'SMotaal/pholio')
 
-  - **[`quench`](/quench)** [<kbd>github</kbd>](https://github.com/SMotaal/quench/ "SMotaal/quench")
+  - **[`quench`](/quench/)** [<kbd>github</kbd>](https://github.com/SMotaal/quench/ 'SMotaal/quench')
 
 ---
 
