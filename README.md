@@ -2,11 +2,11 @@
 
 ## Projects
 
-- **[`smotaal.io`](./index.html)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/ 'SMotaal/smotaal.github.io')
+- **[`smotaal.io`](./)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/ 'SMotaal/smotaal.github.io')
 
   - **[`components`](/components/README)** [<kbd>github</kbd>](https://github.com/SMotaal/components/ 'SMotaal/components')
 
-  - **[`esm`](/esm/README)** [<kbd>github</kbd>](https://github.com/SMotaal/esm/ 'SMotaal/esm')
+  - **[`esm`](/esm/)** [<kbd>github</kbd>](https://github.com/SMotaal/esm/ 'SMotaal/esm')
 
   - **[`experimental`](/experimental/README)** [<kbd>github</kbd>](https://github.com/SMotaal/experimental/ 'SMotaal/experimental')
 
