@@ -24,6 +24,7 @@
 		"@smotaal/esm": "SMotaal/esm"
 	},
 	"resolutions": {
+		"@smotaal/esm": "./esm",
 		"SMotaal/esm": "./esm",
 		"SMotaal/markup": "./markup",
 		"@smotaal/tokenizer": "./markup/packages/@smotaal/tokenizer",
@@ -47,10 +48,6 @@
 			"markup",
 			"pholio",
 			"quench"
-		],
-		"exclude": [
-			"markup/packages/@smotaal/tokenizer",
-			"markup/packages/pseudom"
 		],
 		"nohoist": [
 			"**/pseudom"
