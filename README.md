@@ -10,9 +10,9 @@
 
   - **[`experimental`](/experimental/README)** [<kbd>github</kbd>](https://github.com/SMotaal/experimental/ 'SMotaal/experimental')
 
-  - **[`markup`](/markup/)** [<kbd>github</kbd>](https://github.com/SMotaal/markup/ 'SMotaal/markup')
+  - **[`markup`](/markup/README)** [<kbd>github</kbd>](https://github.com/SMotaal/markup/ 'SMotaal/markup')
 
-  - **[`markout`](/markout/)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/tree/master/packages/markout/ 'SMotaal/smotaal.github.io')
+  - **[`markout`](/markout/README)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/tree/master/packages/markout/ 'SMotaal/smotaal.github.io')
 
   - **[`pholio`](/pholio/)** [<kbd>github</kbd>](https://github.com/SMotaal/pholio/ 'SMotaal/pholio')
 
@@ -22,6 +22,7 @@
 
 ## Changes
 
+- `0.0.0-alpha.4` Using all-markout links (ie `/markout/#/…`)
 - `0.0.0-alpha.3` Using flat structure with `http-server` proxy
 - `0.0.0-alpha.2` Using `yarn` workspaces to `../`
 - `0.0.0-alpha.0` Using symbolic links to `node_moudles/@smotaal`
@@ -34,14 +35,26 @@
 
 #### A. Using `npx` without dependencies <kbd>recommended</kbd>
 
+<blockquote>
+
+This option is ideal for troubleshooting or local hacking using the `?dev` query to force loading from `…/lib/` folders where you can make all kinds of changes directly at a source level.
+
+</blockquote>
+
 1. Clone the repo locally
 2. Clone other repo(s) you need into their respective folder
-3. Run `npx http-server --cors -s -P https://www.smotaal.io/`
+3. Run `npm start` or `npx http-server --cors -s -P https://www.smotaal.io/`
 
 #### B. Using `npm install` or `yarn` with dependencies
 
+<blockquote>
+
+This option is **required** if you will be updating any of the bundles in the `…/dist/` folders by running `yarn workspace @smotaal/‹workspace› bundle`.
+
+</blockquote>
+
 1. Clone the repo locally
 2. Clone other repo(s) if applicable into ./packages
-3. Run `npm install`
-4. Run `npm run relink`
-5. Run `npm run serve`
+3. Run `npm run relink`.
+4. Run `npm install` or `yarn`.
+5. Run `npm run serve` or `yarn http-server --cors -s -P https://www.smotaal.io/`.
