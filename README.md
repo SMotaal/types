@@ -14,41 +14,46 @@
 
 </h2>
 
-<aside>
-
-## Changes
-
 <table>
 
-<tr><td>
+<tbody><tr><th>
+
+<h2 align=center>Changes</h2>
+
+</th></tr><tr><td>
 
 `0.0.0-alpha.4` Using all-markout links (ie `/markout/#/â€¦`)
 
-<tr><td>
+</td></tr><tr><td>
 
 `0.0.0-alpha.3` Using flat structure with `http-server` proxy
 
-<tr><td>
+</td></tr><tr><td>
 
 `0.0.0-alpha.2` Using `yarn` workspaces to `../`
 
-<tr><td>
+</td></tr><tr><td>
 
 `0.0.0-alpha.0` Using symbolic links to `node_moudles/@smotaal`
 
-</table>
+</td></tr>
 
-## Development
+</tbody>
 
-<table>
-<tr><th>
+<tr><td hidden></td></tr>
 
-### Serving locally (using `http-server`)
+<tbody><tr><th>
 
-<tr><td>
-<tr><td>
+<h2>
+<div>Development<div>
+<sub>
 
-#### A. Using `npx` without dependencies <kbd>recommended</kbd>
+Using `npx` without dependencies
+
+</sub>
+</h2>
+
+</th></tr><tr><td>
 
 <blockquote>
 
@@ -60,10 +65,22 @@ This option is ideal for troubleshooting or local hacking using the `?dev` query
 2. Clone other repo(s) you need into their respective folder
 3. Run `npm start` or `npx http-server --cors -s -P https://www.smotaal.io/`
 
-<tr><td>
-<tr><td>
+</td></tr></tbody>
 
-#### B. Using `npm install` or `yarn` with dependencies
+<tr><td hidden></td></tr>
+
+<tbody><tr><th>
+
+<h2>
+<div>Development<div>
+<sub>
+
+Using `npm` or `yarn` with dependencies
+
+</sub>
+</h2>
+
+</th></tr><tr><td>
 
 <blockquote>
 
@@ -79,7 +96,6 @@ This option is **required** if you will be updating any of the bundles in the `â
 
 <!-- # **[`smotaal.io`](./)** <span float-right><small>[<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/ 'SMotaal/smotaal.github.io')</small></span> -->
 
-</table>
-</aside>
+</td></tr></table>
 
 </div>
