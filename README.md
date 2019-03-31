@@ -4,13 +4,14 @@
 
 <h2>
 
-**[<kbd>Components</kbd>](/components/README)**
-**[<kbd>Experimental</kbd>](/experimental/README)**
+<!-- **[<kbd>Components</kbd>](/components/README)** -->
+
 **[<kbd>Markup</kbd>](/markup/README)**
 **[<kbd>Markout</kbd>](/markout/README)**
 **[<kbd>Meta</kbd>](/meta/README)**
 **[<kbd>Pholio</kbd>](/pholio/)**
 **[<kbd>Quench</kbd>](/quench/)**
+**[<kbd>Experimental</kbd>](/experimental/ 'Live on the edge!')**
 
 </h2>
 
