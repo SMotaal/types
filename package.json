@@ -10,8 +10,8 @@
 	"exports": {},
 	"scripts": {
 		"bundle": "@@ markup bundle && @@ markout bundle && @@ pholio bundle && @@ quench bundle",
-		"start": "npx http-server -d false --cors -s -P https://www.smotaal.io/",
-		"serve": "http-server -d false --cors -s -P https://www.smotaal.io/",
+		"start": "npx http-server -d false --cors -s -c-1 -P https://www.smotaal.io/",
+		"serve": "http-server -d false --cors -s -c-1 -P https://www.smotaal.io/",
 		"relink": "nex tasks/relink.js",
 		"nes": "pushd $INIT_CWD && nes",
 		"xcode-install": "xcode-select --install"
