@@ -6,9 +6,11 @@ if (globalThis.self && globalThis.navigator) {
 	console.log('[%s] %o', name, {self, window, location, document, navigator});
 
 	if (document && window === document.defaultView) {
-		typeof bootstrap === 'undefined' ||
+		typeof bootstrap === 'object' &&
+			bootstrap.previousSibling &&
 			(bootstrap.previousSibling.nodeType === bootstrap.COMMENT_NODE && bootstrap.previousSibling.remove(),
-			bootstrap.previousSibling.nodeType === bootstrap.TEXT_NODE &&
+			bootstrap.previousSibling &&
+				bootstrap.previousSibling.nodeType === bootstrap.TEXT_NODE &&
 				(bootstrap.previousSibling.data = 'Now check the console :)'));
 		self.Worker &&
 			(new Worker(`${location}`, {type: 'classic'}).onmessage = ({data}) => console.log(`[Worker] %o`, data));
