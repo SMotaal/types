@@ -11,7 +11,7 @@
 		if (document && window === document.defaultView) {
 			document.body.innerText.startsWith('//') && document.body.firstChild.remove();
 			self.Worker &&
-				(new Worker(`${location}`.replace('.html', '.js'), {type: 'classic'}).onmessage = ({data}) =>
+				(new Worker(`${location}`, {type: 'classic'}).onmessage = ({data}) =>
 					console.log(`[Worker] %o`, data));
 			// TODO: if (navigator.serviceWorker) import('/service-worker.js');
 		} else if (self.postMessage) {
