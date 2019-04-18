@@ -9,7 +9,7 @@
 		if (!frame) return;
 		// this.load(src, frame.iframe);
 		await this.registered;
-		this.frame.src = '';
+		// this.frame.src = '';
 		await new Promise(requestAnimationFrame);
 		this.frame.src = src;
 	}
