@@ -1,7 +1,7 @@
 ﻿import {html, css, Component, local} from './helpers.js';
 
 const styles = css`
-	@import '/pholio/styles/debug.css';
+	/* @import '/pholio/styles/debug.css'; */
 
 	:host {
 		display: flex;

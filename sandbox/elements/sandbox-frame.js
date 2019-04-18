@@ -9,6 +9,7 @@ const styles = css`
 		display: flex;
 		padding: 0;
 		margin: 0;
+		border-radius: 0.25ch;
 		/* flex-flow: row; */
 	}
 
