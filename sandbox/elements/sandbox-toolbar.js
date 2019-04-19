@@ -1,4 +1,4 @@
-﻿import {html, css, Component, local} from './helpers.js';
+﻿import {html, css, Component} from './helpers.js';
 
 const styles = css`
 	/* @import '/pholio/styles/debug.css'; */
