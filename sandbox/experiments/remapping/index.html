@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <title>smotaal.io/sandbox</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="stylesheet" href="/pholio/styles/fonts/iosevka/iosevka.css" />
+  <link rel="stylesheet" href="/pholio/styles/styles.css" />
+  <!--
+  <script defer src="/sandbox/assets/fontawesome.regular.svg.js"
+          integrity="sha384-Uc9toywOA44owltk1MWl0lQZ+L0mBzJkLQcdif6+JtG9izvok9DLJtCZX57Uq3k2"
+          crossorigin="anonymous"></script>
+  <script defer src="/sandbox/assets/fontawesome.svg.js"
+          integrity="sha384-EMmnH+Njn8umuoSMZ3Ae3bC9hDknHKOWL2e9WJD/cN6XLeAN7tr5ZQ0Hx5HDHtkS"
+          crossorigin="anonymous"></script>
+  -->
+  <style>
+    html {
+      --shade: #eb0e;
+    }
+
+    body>main {
+      width: unset;
+
+    }
+
+    .flush {
+      padding: 0.25ch;
+      /* margin: 0; */
+    }
+  </style>
+  <script type="module" src="./elements/sandbox-frame.js"></script>
+  <script type="module" src="./elements/sandbox-console.js"></script>
+  <script type="module" src="./elements/sandbox-toolbar.js"></script>
+  <script type="module" src="/quench/elements/markout-content.js"></script>
+  <script>
+    addEventListener('hashchange', () => {
+      const hash = `${location.hash || ''}`.slice(1);
+      const frame = document.querySelector('sandbox-frame');
+      hash && frame && (frame.src = new URL(`./containers/${hash}/`, location));
+    });
+  </script>
+</head>
+
+<body>
+  <main>
+    <sandbox-frame class="flush">
+      <markout-content>
+        Scope: `./containers/`
+
+        Containers:
+        - [`‹scope›/test/`](#test)
+        - [`‹scope›/smotaal.io/`](#smotaal.io)
+      </markout-content>
+    </sandbox-frame>
+  </main>
+
+</body>
+
+</html>

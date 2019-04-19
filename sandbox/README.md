@@ -4,6 +4,8 @@
 
 The initial phase explored the concept of _sandboxing-by-remapping_ using a service worker.
 
+You can try it out [here](./experiments/remapping/index.html)
+
 <blockquote>
 
 **Important Note**: Client resolvable URLs for sub resources which start with a `/` are not being remapped to retain traceability.
