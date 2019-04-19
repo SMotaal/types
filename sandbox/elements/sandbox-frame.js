@@ -1,6 +1,5 @@
 ﻿import {html, css, Component, Attributes} from './helpers.js';
 import {SandboxContainer} from '../lib/sandbox-container.js';
-// import './sandbox-console.js';
 
 const styles = css`
 	/* @import '/pholio/styles/debug.css'; */
@@ -141,10 +140,12 @@ export class SandboxFrameElement extends Component {
 		}
 	}
 
-	connectedCallback() {
+	async connectedCallback() {
 		super.connectedCallback();
 		// console.log(this.src);
-		this.src || this.container.navigate(new URL('/sandbox/sandbox/test/', location));
+		this.src ||
+			(await new Promise(requestAnimationFrame),
+			this.container.navigate(new URL('/sandbox/containers/test/', location)));
 	}
 
 	reload() {
@@ -185,8 +186,6 @@ try {
 				<slot></slot>
 			</sandbox-console>
 		</div>
-		<!-- Slot used to sort child elements -->
-		<!-- <slot style="display: none;" inert hidden></slot> -->
 	`;
 
 	customElements.define('sandbox-frame', SandboxFrameElement);

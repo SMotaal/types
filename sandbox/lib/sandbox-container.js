@@ -1,42 +1,72 @@
 ﻿export class SandboxContainer {
 	constructor({frame}) {
 		this.frame = frame;
-		this.registered = new.target.registerServiceWorker();
+		this.registered = new.target.register();
 	}
 
 	async navigate(src) {
-		const {frame} = this;
-		if (!frame) return;
-		// this.load(src, frame.iframe);
-		await this.registered;
-		// this.frame.src = '';
-		await new Promise(requestAnimationFrame);
-		this.frame.src = src;
+		const {frame, registered} = this;
+		// await (document.readyState === 'complete' ||
+		// 	new Promise(resolve => document.addEventListener('readystatechange', resolve, {once: true})));
+		frame && 'src' in frame && (await this.registered, (frame.src = src));
 	}
 
-	// async load(url, iframe) {
-	// 	console.log({url, iframe});
-	// 	await this.registered;
-	// 	// const {parentElement} = iframe;
-	// 	iframe.src = '';
-	// 	// iframe.remove();
-	// 	await new Promise(requestAnimationFrame);
-	// 	const sourceText = await (await fetch(url)).text();
-	// 	console.log({sourceText});
-	// 	iframe.srcdoc = sourceText;
-	// 	// return sourceText;
-	// }
+	async prefetch(src) {}
 
 	reload() {
 		this.frame && this.frame.reload();
 	}
 
+	/**
+	 * @param {string|{toString}} aspect
+	 * @param {... Array<{}>} details
+	 */
+	static log(aspect, ...details) {
+		details.length &&
+			console.log(
+				`%c%s%c`,
+				'background: #69F; color: white; border-radius: 2px;',
+				` ${aspect} `,
+				'',
+				Object.assign({}, ...details),
+			);
+	}
+
+	/**
+	 * @param {Awaitable<ServiceWorkerRegistration>} registration
+	 * @returns {Promise<ServiceWorkerRegistration>}
+	 */
+	static async update(registration) {
+		const previous = registration && (registration = await registration);
+		const updated =
+			previous && registration !== (registration = await registration.update()) ? registration : undefined;
+		return updated
+			? (SandboxContainer.log('SandboxContainer.update', {previous, updated}), registration)
+			: arguments[0];
+	}
+	/**
+	 * @param {Awaitable<ServiceWorkerRegistration>} registration
+	 * @returns {Promise<ServiceWorkerRegistration>}
+	 */
+	static async activate(registration) {
+		let scope, scriptURL, type, installed, activated, onupdatefound;
+		const Species = this || SandboxContainer;
+		registration &&
+			(registration = await registration) &&
+			(({scope, onupdatefound = (registration.onupdatefound = event => Species.update(registration))} = registration),
+			(installed = registration.installation ? (await registration.installation, true) : false),
+			(activated = registration.active ? (({scriptURL, type = 'classic'} = registration.active), true) : false),
+			SandboxContainer.log('SandboxContainer.activate', {registration, scope, scriptURL, type, installed, activated}),
+			activated && (await new Promise(requestAnimationFrame)));
+		return registration;
+	}
+
 	/** @param {ServiceWorkerOptions} [options] */
-	static async registerServiceWorker(options) {
+	static async register(options) {
 		const {window, navigator} = globalThis;
 		const serviceWorkerContainer = navigator && navigator.serviceWorker;
 
-		let url, scope, type, registration;
+		let scriptURL, scope, type, registration;
 
 		const Species = this || SandboxContainer;
 		const {
@@ -49,22 +79,17 @@
 		}
 
 		if (serviceWorkerContainer) {
-			({url = defaults.url, scope, type} = options = {...options});
+			({scriptURL = defaults.scriptURL, scope, type} = options = {...options});
 
-			!'url' in options ||
-				((url = `${new URL(url, location)}`), 'scope' in options || (scope = `${new URL('./sandbox/', url)}`));
+			!'scriptURL' in options ||
+				((scriptURL = `${new URL(scriptURL, location)}`),
+				'scope' in options || (scope = `${new URL('./', scriptURL)}`));
 
-			(url === defaults.url || !type) && (type = defaults.type);
+			(scriptURL === defaults.scriptURL || !type) && (type = defaults.type);
 
-			registration = await (Species.registration = serviceWorkerContainer.register(url, {scope, type})).then(
-				async registration => {
-					registration.installation && console.log('installation: %o', await registration.installation);
-					registration.active && console.log('installation: %o', await registration.active);
-					return registration;
-				},
-			);
-
-			console.log('registration: %o', {arguments: arguments[0], defaults, url, scope, type, registration});
+			registration = await (Species.registration = Species.activate(
+				serviceWorkerContainer.register(scriptURL, {scope, type}),
+			));
 		}
 
 		return registration;
@@ -73,6 +98,7 @@
 	static get defaults() {
 		return defaults;
 	}
+
 }
 
 const defaults = {};
@@ -83,11 +109,11 @@ const base = (defaults.base = `${new URL(
 )}`.replace(/\/(?:dist|lib)\/^/, '/'));
 
 defaults.serviceWorker = Object.freeze({
-	url: `${new URL('./service-worker.js', base)}`,
-	// scope: `${new URL('./sandbox/', base)}`,
+	scriptURL: `${new URL('./containers/service-worker.js', base)}`,
 	type: 'classic',
 });
 
 Object.freeze(defaults);
 
 /** @typedef {Partial<defaults.serviceWorker>} ServiceWorkerOptions */
+/** @template T @typedef {T|Promise<T>} Awaitable */

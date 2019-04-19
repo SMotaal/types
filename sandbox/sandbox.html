@@ -33,12 +33,26 @@
   <script type="module" src="./elements/sandbox-frame.js"></script>
   <script type="module" src="./elements/sandbox-console.js"></script>
   <script type="module" src="./elements/sandbox-toolbar.js"></script>
+  <script type="module" src="../quench/elements/markout-content.js"></script>
+  <script>
+    addEventListener('hashchange', () => {
+      const hash = `${location.hash || ''}`.slice(1);
+      const frame = document.querySelector('sandbox-frame');
+      hash && frame && (frame.src = new URL(`./containers/${hash}/`, location));
+    })
+  </script>
 </head>
 
 <body>
   <main>
     <sandbox-frame class="flush">
-      Welcome to the sandbox demo
+      <markout-content>
+        Scope: `./containers/`
+
+        Containers:
+        - [`‹scope›/test/`](#test)
+        - [`‹scope›/smotaal.io/`](#smotaal.io)
+      </markout-content>
     </sandbox-frame>
   </main>
 </body>

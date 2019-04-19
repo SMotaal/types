@@ -7,9 +7,6 @@ const styles = css`
 		display: flex;
 		padding: 0;
 		margin: 0;
-		/* flex-flow: row; */
-		/* grid-auto-flow: row; */
-		/* grid-auto-rows: 1fr; */
 	}
 
 	#wrapper {
@@ -27,7 +24,6 @@ const styles = css`
 export class SandboxConsoleElement extends Component {
 	constructor() {
 		super();
-		// /** @type {HTMLSlotElement} */ const slot = this['::'];
 	}
 
 	connectedCallback() {
@@ -40,11 +36,7 @@ try {
 	SandboxConsoleElement.styles = styles;
 	SandboxConsoleElement.template = html`
 		<div id="wrapper">
-			<!-- <div id="toolbar"> -->
-			<!-- <input id="address" /> -->
-			<!-- <input id="reload" type="button" /> -->
-			<!-- </div> -->
-			<slot inert></slot>
+			<slot></slot>
 			<div id="content"><slot id="output" name="output" hidden></slot></div>
 		</div>
 		<!-- Slot used to sort child elements -->
