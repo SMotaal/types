@@ -34,13 +34,16 @@
 	addEventListener('fetch', async event => {
 		const {
 			request: {url},
+			resultingClientId,
 			clientId,
 		} = event;
 		if (url.includes('/sandbox/')) {
 			try {
 				const {pathname, query, hash} = new URL(url, scope);
 				const [sandbox, asset = '/'] = pathname.slice(root.length).split(/(?=\/.*$|$)/, 2);
-				const mapping = (frames[clientId] = mappings[sandbox]);
+				// const mapping = (frames[clientId] = mappings[sandbox]);
+				const mapping = mappings[sandbox];
+				resultingClientId && (frames[resultingClientId] = mapping);
 				if (mapping) {
 					const href = new URL(`.${asset}${query || ''}${hash || ''}`, mapping);
 					console.log('fetch (sandboxed): %o', {event, pathname, query, hash, sandbox, asset, mapping, href});
@@ -60,6 +63,8 @@
 			}
 			event.respondWith(fetch(event.request));
 		}
+
+		// const mapping = frames[clientId || resultingClientId];
 	});
 
 	// addEventListener('message', async event => {
