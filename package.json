@@ -14,7 +14,8 @@
 		"serve": "http-server -d false --cors -s -c-1 -P https://www.smotaal.io/",
 		"relink": "nex tasks/relink.js",
 		"nes": "pushd $INIT_CWD && nes",
-		"xcode-install": "xcode-select --install"
+		"xcode-install": "xcode-select --install",
+		"n": "NODE_MIRROR=https://nodejs.org/download/nightly/ n"
 	},
 	"devDependencies": {
 		"@types/node": "*",
