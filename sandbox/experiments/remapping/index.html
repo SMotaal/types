@@ -29,10 +29,14 @@
       padding: 0.25ch;
       /* margin: 0; */
     }
+
+    [hidden] {
+      display: none;
+    }
   </style>
-  <script type="module" src="./elements/sandbox-frame.js"></script>
-  <script type="module" src="./elements/sandbox-console.js"></script>
   <script type="module" src="./elements/sandbox-toolbar.js"></script>
+  <script type="module" src="./elements/sandbox-console.js"></script>
+  <script type="module" src="./elements/sandbox-frame.js"></script>
   <script type="module" src="/quench/elements/markout-content.js"></script>
   <script>
     addEventListener('hashchange', () => {
@@ -55,7 +59,6 @@
       </markout-content>
     </sandbox-frame>
   </main>
-
 </body>
 
 </html>
