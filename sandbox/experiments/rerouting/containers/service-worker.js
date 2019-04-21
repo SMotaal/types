@@ -51,26 +51,28 @@ ServiceWorker: {
 	addEventListener('activate', event => event.waitUntil(clients.claim()));
 	addEventListener('install', event => event.waitUntil(skipWaiting()));
 	addEventListener('fetch', event => {
-		const request = {init: {}};
+		const request = {init: {}, originalInit: {}};
 		try {
 			({
 				clientId: request.initiator,
-				// Safari seems to not always report the resultingClientId
+				// TODO: Align with spec
+				//  https://fetch.spec.whatwg.org/#concept-request-replaces-client-id
+				//   - Safari seems to not always report the resultingClientId
 				resultingClientId: request.receiver,
 				// TODO: Work through the various init options
 				request: {
 					body: request.init.body,
-					// cache: request.init.cache,
-					// credentials: request.init.credentials,
-					// headers: request.init.headers,
-					// integrity: request.init.integrity,
-					// keepalive: request.init.keepalive,
+					cache: request.originalInit.cache,
+					credentials: request.originalInit.credentials,
+					headers: request.originalInit.headers,
+					integrity: request.originalInit.integrity,
+					keepalive: request.originalInit.keepalive,
 					method: request.init.method,
 					url: request.url,
-					// mode: request.init.mode,
-					// referrerPolicy: request.init.referrerPolicy,
-					// referrer: request.init.referrer,
-					// redirect: request.init.redirect,
+					mode: request.originalInit.mode,
+					referrerPolicy: request.originalInit.referrerPolicy,
+					referrer: request.originalInit.referrer,
+					redirect: request.originalInit.redirect,
 				},
 			} = event).respondWith(
 				routers['*'](request).response ||
