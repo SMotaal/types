@@ -1,19 +1,31 @@
 {
 	"search.exclude": {
+		"packages/markout": true,
+		"components": false,
+		"console": false,
+		"esm": false,
+		"experimental": false,
+		"helpers": false,
+		"markup": false,
+		"pholio": false,
+		"quench": false,
 		"**/node_modules": true,
 		"**/bower_components": true,
 		"**/archive": true,
 		"**/trash": true,
 		"**/dist": true,
-		"[more]": true,
-		"components": true,
-		"esm": true,
-		"experimental": true,
-		"markup": true,
-		"pholio": true,
-		"quench": true
+		"**/[more]": true
 	},
 	"files.watcherExclude": {
+		"packages/markout": true,
+		"components": false,
+		"console": false,
+		"esm": false,
+		"experimental": false,
+		"helpers": false,
+		"markup": false,
+		"pholio": false,
+		"quench": false,
 		"**/.git/objects/**": true,
 		"**/.git/subtree-cache/**": true,
 		"**/node_modules": true,
@@ -21,14 +33,22 @@
 		"**/archive": true,
 		"**/trash": true,
 		"**/dist": true,
-		"[more]": true,
-		"components": true,
-		"esm": true,
-		"experimental": true,
-		"markup": true,
-		"pholio": true,
-		"quench": true
+		"**/[more]": true
 	},
+	"files.exclude": {
+		// "packages/markout": true,
+		"components": false,
+		"console": false,
+		"esm": false,
+		"experimental": false,
+		"helpers": false,
+		"markup": false,
+		"pholio": false,
+		"quench": false
+	},
+	"explorer.decorations.colors": false,
+	"git.autoRepositoryDetection": true,
+	"git.scanRepositories": ["console", "components", "esm", "experimental", "markout", "markup", "pholio", "quench"],
 	"cSpell.words": ["interop"],
 	"cSpell.enabled": true,
 	"cSpell.enabledLanguageIds": ["html", "markdown"],
@@ -38,5 +58,8 @@
 		"*.mo": "markdown",
 		"*.mout": "markdown",
 		"*.markout": "markdown"
-	}
+	},
+	"markdown.styles": [
+		// "/Users/daflair/Projects/smotaal.io/pholio/styles/common.css" //
+	]
 }
