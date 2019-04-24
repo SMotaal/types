@@ -2,9 +2,7 @@
 
 # smotaal.io
 
-<h2>
-
-<!-- **[<kbd>Components</kbd>](/components/README)** -->
+<h1>
 
 **[<kbd>Markup</kbd>](/markup/README)**
 **[<kbd>Markout</kbd>](/markout/README)**
@@ -13,7 +11,7 @@
 **[<kbd>Quench</kbd>](/quench/)**
 **[<kbd>Experimental</kbd>](/experimental/ 'Live on the edge!')**
 
-</h2>
+</h1>
 
 <table>
 
@@ -95,7 +93,7 @@ This option is **required** if you will be updating any of the bundles in the `â
 4. Run `npm install` or `yarn`.
 5. Run `npm run serve` or `yarn http-server --cors -s -P https://www.smotaal.io/`.
 
-<!-- # **[`smotaal.io`](./)** <span float-right><small>[<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/ 'SMotaal/smotaal.github.io')</small></span> -->
+<!-- # **[`smotaal.io`](./)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/ 'SMotaal/smotaal.github.io') -->
 
 </td></tr></table>
 

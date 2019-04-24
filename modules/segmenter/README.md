@@ -1,1 +1,1 @@
-﻿# `smotaal.io/modules/segmenter`
+﻿# @smotaal/segmenter

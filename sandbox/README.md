@@ -1,4 +1,4 @@
-﻿# `smotaal.io/sandbox`
+﻿# smotaal.io/sandbox
 
 ## Phase 1
 
