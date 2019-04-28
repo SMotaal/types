@@ -1,37 +1,35 @@
 ﻿import {matchAll, LOOKAHEAD, INSET, OUTSET, DELIMITER} from './matcher.js';
 
 export const debugMatcher = (matcher, sourceText, options = {}) => (
-	({time: options.time = false, stamp: options.stamp = '' && ` #${Date.now()}`} = options),
-	debugMatcher.matches(debugMatcher.match(matcher, sourceText, options), options)
+	({timing: options.timing = false} = options),
+	debugMatcher.matches(debugMatcher.matchAll(matcher, sourceText, options), options)
 );
 
-debugMatcher.match = (matcher, sourceText, options = {}) => {
-	const {time = false, stamp = ''} = options;
-	time && console.time(`matching${stamp}`);
+debugMatcher.matchAll = (matcher, sourceText, options = {}) => {
+	const {timing = false} = options;
+	const stamp = `${(timing === true && `-${Date.now()}`) || timing || ''}`;
+	timing && console.time(`matching${stamp}`);
 	options.matches = [...matchAll((options.sourceText = sourceText), (options.matcher = matcher))];
-	time && console.timeEnd(`matching${stamp}`);
+	timing && console.timeEnd(`matching${stamp}`);
 	return options.matches;
 };
 
 debugMatcher.matches = (matches, options = {}) => {
 	const {
 		method = 'log',
-		time = false,
-		stamp = '',
+		timing = false,
 		warnings = true,
 		matcher,
 		colors = (matcher && matcher.colors) || debugMatcher.colors,
 		logs = [],
-		rendered = [],
 		uniqueTypes = matcher &&
 			matcher.entities && [...new Set(matcher.entities.filter(entity => typeof entity === 'string'))],
 	} = options;
+	const stamp = `${(timing === true && `-${Date.now()}`) || timing || ''}`;
 
-	time && console.time(`printing${stamp}`);
+	timing && console.time(`printing${stamp}`);
 
 	const INITIAL = method === 'render' ? '' : RESET_STYLE;
-
-	// const {records = rendered.records = []} = rendered;
 
 	try {
 		let format;
@@ -39,19 +37,19 @@ debugMatcher.matches = (matches, options = {}) => {
 		for (const match of matches) {
 			if (!match) continue;
 			format = '';
-			const {0: string, index, identity, entity, capture, ...properties} = match;
+			const {0: string, index, identity, entity, capture, input, ...properties} = match;
 			let {[LOOKAHEAD]: lookahead, [INSET]: inset, [OUTSET]: outset, [DELIMITER]: delimiter} = capture;
 			const values = [];
-			const delta = index - lastIndex;
-			const skipped = lastIndex > 0 &&
-				delta > 1 && {index, lastIndex, delta, text: match.input.slice(lastIndex, index) || ''};
+			const delta = (properties.index = index) - (properties.lastIndex = lastIndex);
+			const skipped = (properties.skipped = lastIndex > 0 &&
+				delta > 1 && {index, lastIndex, delta, text: input.slice(lastIndex, index) || ''});
 
 			format = '';
 
 			if (skipped && skipped.text.length) {
 				const {text, ...indices} = skipped;
 				const details = CSS.escape(
-					JSON.stringify(indices, null, 1)
+					JSON.stringify(indices)
 						.replace(/"/g, '')
 						.replace(/\s*\n\s*/, ' ')
 						.slice(1, -1),
@@ -75,14 +73,21 @@ debugMatcher.matches = (matches, options = {}) => {
 			outset !== undefined && (properties.outset = outset);
 			delimiter !== undefined && (properties.delimiter = delimiter);
 
-			const overlap = (delta < 0 && string.slice(0, 1 - delta)) || '';
-			overlap && logs.push(['warn', ['overlap:', {overlap, delta, match, index, lastIndex}]]);
+			const overlap = (properties.overlap = (delta < 0 && string.slice(0, 1 - delta)) || '');
+			overlap && warnings && logs.push(['warn', ['overlap:', {overlap, delta, match, index, lastIndex}]]);
 
 			const color = !identity
 				? colors.unknown || COLORS.unknown
 				: identity in colors
 				? colors[identity]
 				: colors[((uniqueTypes && identity && uniqueTypes.indexOf(identity)) || entity || 0) % colors.length];
+
+			const details = CSS.escape(
+				JSON.stringify({properties, capture}, null, 1)
+					.replace(/^(\s*)"(.*?)":/gm, '$1$2:')
+					.replace(/\s*\n\s*/, ' ')
+					.slice(1, -1),
+			);
 
 			{
 				const start = (inset && inset.length) || 0;
@@ -91,7 +96,7 @@ debugMatcher.matches = (matches, options = {}) => {
 				inset = (inset && (method !== 'render' ? inset.replace(/ /g, SPACE).replace(/\t/g, TAB) : inset)) || '';
 				values.push(
 					...lines.flatMap((line, index) => [
-						`${INITIAL} color: ${color};`,
+						`${INITIAL} color: ${color};${(!index && ` --color: ${color}; --details: "${details}";`) || ''}`,
 						`${INITIAL} border: 1px solid ${color}90; background: ${color}EE; color: white; font-weight: 300;`,
 						inset || '\u200D',
 						`${INITIAL} border: 1px solid ${color}90; color: ${color}90; background: ${color}11; font-weight: 500; text-shadow: 0 0 0 #999F;`,
@@ -103,12 +108,10 @@ debugMatcher.matches = (matches, options = {}) => {
 					SEGMENT_MARGIN.length - 1,
 				)}\u{00A0}%c%s%c%s%c${`%c\n${SEGMENT_MARGIN}%c%s%c%s%c`.repeat(lines.length - 1)}`;
 
-				// const details = CSS.escape(JSON.stringify({inset, delimiter}, null, 1).replace(/"/g, '').replace(/\s*\n\s*/, ' ').slice(1, -1));
-
 				(delimiter =
 					(delimiter && (method !== 'render' ? delimiter.replace(/ /g, SPACE).replace(/\t/g, TAB) : delimiter)) || ''),
 					values.push(
-						`${INITIAL} border: 1px solid ${color}90; background: ${color}EE; color: white; font-weight: 300;`, // --details: "${details}";
+						`${INITIAL} border: 1px solid ${color}90; background: ${color}EE; color: white; font-weight: 300;"`,
 						delimiter || '\u200D',
 						INITIAL,
 					),
@@ -129,15 +132,12 @@ debugMatcher.matches = (matches, options = {}) => {
 			lastIndex = index + string.length;
 		}
 	} catch (exception) {
-		logs.push(['warn', [exception]]);
+		if (!warnings) throw (exception.stack, exception);
+		else logs.push(['warn', [exception]]);
 	}
-	time && console.timeEnd(`printing${stamp}`);
-	if (method === 'render') for (const [method, args] of logs) method === 'render' && rendered.push(render(...args));
-	else
-		for (const [method, args] of logs)
-			method in console && (warnings || method !== 'warn') && Reflect.apply(console[method], console, args);
-	// if (typeof safari === 'object') console.log(rendered);
-	return rendered;
+	timing && console.timeEnd(`printing${stamp}`);
+
+	return render[method === 'render' ? 'output' : 'console'](...logs);
 };
 
 const SEGMENT_MARGIN = `\u{00A0}`.repeat(10);
@@ -192,4 +192,8 @@ render: {
 	render.string = value => `<span class="string">${`${value}`.replace(/\t/g, '<tt class="tab">$&</tt>')}</span>`;
 	render.object = value => `<span class="object">${JSON.stringify(value)}</span>`;
 	render.span = (style, ...content) => `<span class="span" style='${style || ''}'>${content.join('\u00A0')}</span>`;
+	render.output = (...logs) => logs.flatMap(render.output.entry);
+	render.output.entry = ([method, args]) => (method ? render(...args) : []);
+	render.console = (...logs) => void logs.map(render.console.entry);
+	render.console.entry = ([method, args]) => void (method in console && Reflect.apply(console[method], console, args));
 }

@@ -93,11 +93,11 @@ export class Matcher extends RegExp {
 }
 
 export const {
-	INSET = (Matcher.INSET = Symbol.for('INSET')),
-	OUTSET = (Matcher.OUTSET = Symbol.for('OUTSET')),
-	DELIMITER = (Matcher.DELIMITER = Symbol.for('DELIMITER')),
-	UNKNOWN = (Matcher.UNKNOWN = Symbol.for('UNKNOWN')),
-	LOOKAHEAD = (Matcher.LOOKAHEAD = Symbol.for('LOOKAHEAD')),
+	INSET = (Matcher.INSET = /* Symbol.for */ 'INSET'),
+	OUTSET = (Matcher.OUTSET = /* Symbol.for */ 'OUTSET'),
+	DELIMITER = (Matcher.DELIMITER = /* Symbol.for */ 'DELIMITER'),
+	UNKNOWN = (Matcher.UNKNOWN = /* Symbol.for */ 'UNKNOWN'),
+	LOOKAHEAD = (Matcher.LOOKAHEAD = /* Symbol.for */ 'LOOKAHEAD'),
 	escape = (Matcher.escape = /** @type {(source: Matcher.Text) => string} */ ((() => {
 		const {replace} = Symbol;
 		return source => /[\\^$*+?.()|[\]{}]/g[replace](source, '\\$&');
