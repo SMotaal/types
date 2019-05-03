@@ -1,20 +1,25 @@
 ﻿//@ts-check
+/// <reference path="./types.d.ts" />
 
-export class Matcher extends RegExp {
+// const trace = /** @type {[function, any[]][]} */ [];
+
+class Matcher extends RegExp {
 	/**
 	 * @param {Matcher.Pattern} pattern
 	 * @param {Matcher.Flags} [flags]
 	 * @param {Matcher.Entities} [entities]
 	 */
 	constructor(pattern, flags, entities) {
+		// trace.push([new.target, [...arguments]]);
 		//@ts-ignore
 		super(pattern, flags);
+		// Object.assign(this, RegExp.prototype, new.target.prototype);
 		(pattern &&
 			pattern.entities &&
 			Symbol.iterator in pattern.entities &&
 			((!entities && (entities = pattern.entities)) || entities === pattern.entities)) ||
 			Object.freeze((entities = (entities && Symbol.iterator in entities && [...entities]) || []));
-		/** @type {Matcher.Entities} */
+		/** @type {MatcherEntities} */
 		this.entities = entities;
 		({
 			LOOKAHEAD: this.LOOKAHEAD = Matcher.LOOKAHEAD,
@@ -26,7 +31,7 @@ export class Matcher extends RegExp {
 	}
 
 	/**
-	 * @template {Matcher.Match} T
+	 * @template {MatcherMatchResult} T
 	 * @param {string} text
 	 * @param {number} index
 	 * @param {T} match
@@ -37,7 +42,7 @@ export class Matcher extends RegExp {
 		if (text === undefined) return;
 		const {[index - 1]: entity} = this.entities;
 		typeof entity === 'function'
-			? (entity(text, index, match), (match.entity = index - 1))
+			? ((match.entity = index - 1), entity(text, index, match))
 			: entity == null ||
 			  (entity === INSET ||
 					entity === OUTSET ||
@@ -46,22 +51,29 @@ export class Matcher extends RegExp {
 					entity === UNKNOWN ||
 					match.entity !== undefined ||
 					((match.identity = entity), (match.entity = index - 1)),
-			  //@ts-ignore
 			  (match.capture[entity] = text));
 	}
 
+	/**
+	 * @param {string} source
+	 * @returns {MatcherMatchResult}
+	 */
 	exec(source) {
-		/** @type {Matcher.Match} */
+		// const tracing = trace.length;
+		// trace.push([this.exec, [...arguments]]);
+		/** @type {MatcherMatchArray} */
 		const match = super.exec(source);
+		// console.log(trace.slice(tracing, trace.length));
 		match &&
-			(match.forEach(this.capture || Matcher.prototype.capture, this),
-			//@ts-ignore
+			(match.forEach(this.capture || Matcher.prototype.capture, (match.matcher = this)),
 			match.identity || (match.capture[this.UNKNOWN || Matcher.UNKNOWN] = match[0]));
+
+		// @ts-ignore
 		return match;
 	}
 
 	/**
-	 * @param {Matcher.Pattern.Factory} factory
+	 * @param {Matcher.PatternFactory} factory
 	 * @param {Matcher.Flags} [flags]
 	 */
 	static define(factory, flags) {
@@ -98,7 +110,7 @@ export const {
 	DELIMITER = (Matcher.DELIMITER = /* Symbol.for */ 'DELIMITER'),
 	UNKNOWN = (Matcher.UNKNOWN = /* Symbol.for */ 'UNKNOWN'),
 	LOOKAHEAD = (Matcher.LOOKAHEAD = /* Symbol.for */ 'LOOKAHEAD'),
-	escape = (Matcher.escape = /** @type {(source: Matcher.Text) => string} */ ((() => {
+	escape = (Matcher.escape = /** @type {<T>(source: T) => string} */ ((() => {
 		const {replace} = Symbol;
 		return source => /[\\^$*+?.()|[\]{}]/g[replace](source, '\\$&');
 	})())),
@@ -111,17 +123,24 @@ export const {
 		//@ts-ignore
 		(() =>
 			Function.call.bind(
-				// /* TODO: Uncomment eventually  */ String.prototype.matchAll ||
+				// String.prototype.matchAll || // TODO: Uncomment eventually
 				{
 					/**
 					 * @this {string}
 					 * @param {RegExp | string} pattern
 					 */
 					*matchAll() {
-						const matcher = arguments[0] && (arguments[0] instanceof RegExp ? arguments[0] : RegExp(arguments[0], 'g'));
+						const matcher =
+							arguments[0] &&
+							(arguments[0] instanceof RegExp
+								? Object.setPrototypeOf(RegExp(arguments[0].source, arguments[0].flags || 'g'), arguments[0])
+								: RegExp(arguments[0], 'g'));
 						const string = String(this);
+
+						if (!(matcher.flags.includes('g') || matcher.flags.includes('y'))) return void (yield matcher.exec(string));
+
 						for (
-							let match, lastIndex = ((matcher.lastIndex = null), -1);
+							let match, lastIndex = -1;
 							lastIndex <
 							((match = matcher.exec(string)) ? (lastIndex = matcher.lastIndex + (match[0].length === 0)) : lastIndex);
 							yield match, matcher.lastIndex = lastIndex
@@ -131,15 +150,20 @@ export const {
 			))()),
 } = Matcher;
 
-/** @typedef {(text: string, index: number, match: Matcher.Match) => void} Matcher.Operator */
-/** @typedef {(string|symbol)} Matcher.Identity */
-/** @typedef {Matcher.Identity|Matcher.Operator|undefined} Matcher.Entity */
-/** @typedef {Partial<Record<Matcher.Identity, string>>} Matcher.Capture */
-/** @typedef {RegExpExecArray & Partial<{identity: Matcher.Identity, entity: number, capture: Partial<Matcher.Capture>, matcher: Matcher}>} Matcher.Match */
-/** @typedef {<T>(entity: Matcher.Entity) => T | void} Matcher.Entity.Factory */
-/** @typedef {(entity: Matcher.Entity.Factory) => Matcher.Pattern} Matcher.Pattern.Factory */
-/** @typedef {(string | RegExp) & Partial<{entities: Matcher.Entities, flags: Matcher.Flags}>} Matcher.Pattern */
-/** @typedef {string} Matcher.Flags */
-/** @typedef {Matcher.Entity[]} Matcher.Entities */
-/** @typedef {string | {toString(): string}} Matcher.Text */
-/** @template {RegExp} T  @typedef {IterableIterator<T extends Matcher ? Matcher.Match : RegExpMatchArray>} Matcher.Iterator */
+/** @typedef {MatcherFlags} Matcher.Flags */
+/** @typedef {MatcherText} Matcher.Text */
+/** @typedef {MatcherOperator} Matcher.Operator */
+/** @typedef {MatcherIdentity} Matcher.Identity */
+/** @typedef {MatcherEntity} Matcher.Entity */
+/** @typedef {MatcherCapture} Matcher.Capture */
+/** @typedef {MatcherEntityFactory} Matcher.EntityFactory */
+/** @typedef {MatcherPatternFactory} Matcher.PatternFactory */
+/** @typedef {MatcherPattern} Matcher.Pattern */
+/** @typedef {MatcherEntities} Matcher.Entities */
+/** @template {RegExpMatchArray | RegExpExecArray} T @typedef {MatcherMatchArray} Matcher.MatchArray<T> */
+/** @template {RegExpMatchArray | RegExpExecArray} T @typedef {MatcherMatchResult} Matcher.MatchResult<T> */
+/** @template {RegExp} T @typedef {MatcherIterator} Matcher.Iterator<T> */
+
+// /** @template {RegExp} T  @typedef {IterableIterator<T extends Matcher ? Matcher.Match : RegExpMatchArray>} Matcher.Iterator */
+
+export {Matcher};

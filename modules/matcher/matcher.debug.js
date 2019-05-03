@@ -85,8 +85,8 @@ debugMatcher.matches = (matches, options = {}) => {
 			const details = CSS.escape(
 				JSON.stringify({properties, capture}, null, 1)
 					.replace(/^(\s*)"(.*?)":/gm, '$1$2:')
-					.replace(/\s*\n\s*/, ' ')
-					.slice(1, -1),
+					// .replace(/\s*\n\s*/g, ' ')
+					.slice(2, -2),
 			);
 
 			{
@@ -96,7 +96,9 @@ debugMatcher.matches = (matches, options = {}) => {
 				inset = (inset && (method !== 'render' ? inset.replace(/ /g, SPACE).replace(/\t/g, TAB) : inset)) || '';
 				values.push(
 					...lines.flatMap((line, index) => [
-						`${INITIAL} color: ${color};${(!index && ` --color: ${color}; --details: "${details}";`) || ''}`,
+						`${INITIAL} /* border: 1px solid ${color}90; */ color: ${color};${(!index &&
+							` --color: ${color}; --details: "${details}";`) ||
+							''}`,
 						`${INITIAL} border: 1px solid ${color}90; background: ${color}EE; color: white; font-weight: 300;`,
 						inset || '\u200D',
 						`${INITIAL} border: 1px solid ${color}90; color: ${color}90; background: ${color}11; font-weight: 500; text-shadow: 0 0 0 #999F;`,
