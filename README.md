@@ -13,79 +13,58 @@
 
 </h1>
 
+<div align=center style="display: grid">
+
 <table>
 
+<thead><tr><th colspan=2>
+
+### Changes
+
+<tbody>
+
+<tr><th><code>0.0.0-alpha.4</code><td>
+
+Using all-markout links (ie `/markout/#/…`)
+
+<tr><th><code>0.0.0-alpha.3</code><td>
+
+Using flat structure with `http-server` proxy
+
+<tr><th><code>0.0.0-alpha.2</code><td>
+
+Using `yarn` workspaces to `../`
+
+<tr><th><code>0.0.0-alpha.0</code><td>
+
+Using symbolic links to `node_moudles/@smotaal`
+
+</table>
+
+<table>
+<thead><tr><th>
+
+### Development
+
 <tbody><tr><th>
 
-<h2 align=center>Changes</h2>
+#### Using `npx` without dependencies
 
-</th></tr><tr><td>
-
-`0.0.0-alpha.4` Using all-markout links (ie `/markout/#/…`)
-
-</td></tr><tr><td>
-
-`0.0.0-alpha.3` Using flat structure with `http-server` proxy
-
-</td></tr><tr><td>
-
-`0.0.0-alpha.2` Using `yarn` workspaces to `../`
-
-</td></tr><tr><td>
-
-`0.0.0-alpha.0` Using symbolic links to `node_moudles/@smotaal`
-
-</td></tr>
-
-</tbody>
-
-<tr><td hidden></td></tr>
-
-<tbody><tr><th>
-
-<h2>
-<div>Development<div>
-<sub>
-
-Using `npx` without dependencies
-
-</sub>
-</h2>
-
-</th></tr><tr><td>
-
-<blockquote>
+<tr><td>
 
 This option is ideal for troubleshooting or local hacking using the `?dev` query to force loading from `…/lib/` folders where you can make all kinds of changes directly at a source level.
-
-</blockquote>
 
 1. Clone the repo locally
 2. Clone other repo(s) you need into their respective folder
 3. Run `npm start` or `npx http-server --cors -s -P https://www.smotaal.io/`
 
-</td></tr></tbody>
-
-<tr><td hidden></td></tr>
-
 <tbody><tr><th>
 
-<h2>
-<div>Development<div>
-<sub>
+#### Using `npm` or `yarn` with dependencies
 
-Using `npm` or `yarn` with dependencies
-
-</sub>
-</h2>
-
-</th></tr><tr><td>
-
-<blockquote>
+<tr><td>
 
 This option is **required** if you will be updating any of the bundles in the `…/dist/` folders by running `yarn workspace @smotaal/‹workspace› bundle`.
-
-</blockquote>
 
 1. Clone the repo locally
 2. Clone other repo(s) if applicable into ./packages
@@ -93,8 +72,8 @@ This option is **required** if you will be updating any of the bundles in the `�
 4. Run `npm install` or `yarn`.
 5. Run `npm run serve` or `yarn http-server --cors -s -P https://www.smotaal.io/`.
 
-<!-- # **[`smotaal.io`](./)** [<kbd>github</kbd>](https://github.com/SMotaal/smotaal.github.io/ 'SMotaal/smotaal.github.io') -->
+</table>
 
-</td></tr></table>
+</div>
 
 </div>
