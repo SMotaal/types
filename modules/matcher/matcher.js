@@ -77,10 +77,36 @@ class Matcher extends RegExp {
 	 * @param {Matcher.Flags} [flags]
 	 */
 	static define(factory, flags) {
+		/** @type {MatcherEntities} */
 		const entities = [];
-		const pattern = factory(entity => void entities.push(((entity != null || undefined) && entity) || undefined));
+		entities.flags = '';
+		// const pattern = factory(entity => void entities.push(((entity != null || undefined) && entity) || undefined));
+		const pattern = factory(entity => {
+			if (entity !== null && entity instanceof Matcher) {
+				entities.push(...entity.entities);
+
+				!entity.flags || (entities.flags = entities.flags ? Matcher.flags(entities.flags, entity.flags) : entity.flags);
+
+				return entity.source;
+			} else {
+				entities.push(((entity != null || undefined) && entity) || undefined);
+			}
+		});
+		flags = Matcher.flags('g', flags == null ? pattern.flags : flags, entities.flags);
 		return new ((this && (this.prototype === Matcher.prototype || this.prototype instanceof RegExp) && this) ||
-			Matcher)(pattern, `${(flags == null ? pattern && pattern.flags : flags) || ''}`, entities);
+			Matcher)(pattern, flags, entities);
+	}
+
+	static flags(...sources) {
+		let flags = '',
+			iterative;
+		for (const source of sources) {
+			if (!source || (typeof source !== 'string' && typeof source.flags !== 'string')) continue;
+			for (const flag of source.flags || source)
+				(flag === 'g' || flag === 'y' ? iterative || !(iterative = true) : flags.includes(flag)) || (flags += flag);
+		}
+		// console.log('%o: ', flags, ...sources);
+		return flags;
 	}
 
 	static get sequence() {

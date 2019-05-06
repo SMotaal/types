@@ -31,9 +31,15 @@ interface MatcherCapture {
 	[identity: MatcherIdentity]: string;
 }
 
-type MatcherEntities = MatcherEntity[];
+interface MatcherEntities extends Array<MatcherEntity> {
+	flags?: string;
+}
+
 type MatcherEntity = MatcherIdentity | MatcherOperator | undefined;
-type MatcherEntityFactory = <T>(entity: MatcherEntity) => T | void;
+type MatcherEntityFactory = {
+	<T>(entity: MatcherEntity): T | void;
+	(entity: Matcher): string;
+};
 
 type MatcherIdentity = string | symbol;
 type MatcherOperator = (text: string, index: number, match: MatcherMatchArray) => void;
