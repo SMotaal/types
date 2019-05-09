@@ -5,11 +5,13 @@
 
 class Matcher extends RegExp {
 	/**
+	 * @template T
 	 * @param {Matcher.Pattern} pattern
 	 * @param {Matcher.Flags} [flags]
 	 * @param {Matcher.Entities} [entities]
+	 * @param {T} [state]
 	 */
-	constructor(pattern, flags, entities) {
+	constructor(pattern, flags, entities, state) {
 		// trace.push([new.target, [...arguments]]);
 		//@ts-ignore
 		super(pattern, flags);
@@ -21,10 +23,12 @@ class Matcher extends RegExp {
 			Object.freeze((entities = (entities && Symbol.iterator in entities && [...entities]) || []));
 		/** @type {MatcherEntities} */
 		this.entities = entities;
+		/** @type {T} */
+		this.state = state;
 		({
-			LOOKAHEAD: this.LOOKAHEAD = Matcher.LOOKAHEAD,
-			INSET: this.INSET = Matcher.INSET,
-			OUTSET: this.OUTSET = Matcher.OUTSET,
+			// LOOKAHEAD: this.LOOKAHEAD = Matcher.LOOKAHEAD,
+			// INSET: this.INSET = Matcher.INSET,
+			// OUTSET: this.OUTSET = Matcher.OUTSET,
 			DELIMITER: this.DELIMITER = Matcher.DELIMITER,
 			UNKNOWN: this.UNKNOWN = Matcher.UNKNOWN,
 		} = new.target);
@@ -33,24 +37,26 @@ class Matcher extends RegExp {
 	/**
 	 * @template {MatcherMatchResult} T
 	 * @param {string} text
-	 * @param {number} index
+	 * @param {number} capture
 	 * @param {T} match
 	 * @returns {T}
 	 */
-	capture(text, index, match) {
-		if (index === 0) return void (match.capture = {});
+	capture(text, capture, match) {
+		if (capture === 0) return void (match.capture = {});
 		if (text === undefined) return;
-		const {[index - 1]: entity} = this.entities;
+		const index = capture - 1;
+		const {
+			entities: {[index]: entity},
+			state,
+		} = this;
 		typeof entity === 'function'
-			? ((match.entity = index - 1), entity(text, index, match))
-			: entity == null ||
-			  (entity === INSET ||
-					entity === OUTSET ||
-					entity === DELIMITER ||
-					entity === LOOKAHEAD ||
-					entity === UNKNOWN ||
-					match.entity !== undefined ||
-					((match.identity = entity), (match.entity = index - 1)),
+			? ((match.entity = index), entity(text, capture, match, state))
+			: entity == null || //entity === INSET ||
+			  // entity === OUTSET ||
+			  // entity === DELIMITER ||
+			  // entity === LOOKAHEAD ||
+			  // entity === UNKNOWN ||
+			  (match.entity !== undefined || ((match.identity = entity), (match.entity = index)),
 			  (match.capture[entity] = text));
 	}
 
@@ -123,19 +129,25 @@ class Matcher extends RegExp {
 		 * @param {any} value
 		 * @returns {string}
 		 */
-		sequence.span = value => (value != null && (typeof value !== 'symbol' && value)) || '';
+		sequence.span = value =>
+			(value &&
+				// TODO: Don't coerce to string here?
+				(typeof value !== 'symbol' && `${value}`)) ||
+			'';
+
 		sequence.WHITESPACE = /^\s+|\s*\n\s*|\s+$/g;
+
 		Object.defineProperty(Matcher, 'sequence', {value: Object.freeze(sequence), enumerable: true, writable: false});
 		return sequence;
 	}
 }
 
 export const {
-	INSET = (Matcher.INSET = /* Symbol.for */ 'INSET'),
-	OUTSET = (Matcher.OUTSET = /* Symbol.for */ 'OUTSET'),
+	// INSET = (Matcher.INSET = /* Symbol.for */ 'INSET'),
+	// OUTSET = (Matcher.OUTSET = /* Symbol.for */ 'OUTSET'),
 	DELIMITER = (Matcher.DELIMITER = /* Symbol.for */ 'DELIMITER'),
 	UNKNOWN = (Matcher.UNKNOWN = /* Symbol.for */ 'UNKNOWN'),
-	LOOKAHEAD = (Matcher.LOOKAHEAD = /* Symbol.for */ 'LOOKAHEAD'),
+	// LOOKAHEAD = (Matcher.LOOKAHEAD = /* Symbol.for */ 'LOOKAHEAD'),
 	escape = (Matcher.escape = /** @type {<T>(source: T) => string} */ ((() => {
 		const {replace} = Symbol;
 		return source => /[\\^$*+?.()|[\]{}]/g[replace](source, '\\$&');

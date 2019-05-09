@@ -42,7 +42,7 @@ type MatcherEntityFactory = {
 };
 
 type MatcherIdentity = string | symbol;
-type MatcherOperator = (text: string, index: number, match: MatcherMatchArray) => void;
+type MatcherOperator = <T>(text: string, capture: number, match: MatcherMatchArray, state?: T) => void;
 
 interface MatcherSpecies extends Partial<RegExpConstructor> {
 	[Symbol.species]?: this;

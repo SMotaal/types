@@ -1,4 +1,4 @@
-﻿import {matchAll, LOOKAHEAD, INSET, OUTSET, DELIMITER} from './matcher.js';
+﻿import {matchAll, DELIMITER, UNKNOWN} from './matcher.js';
 
 export const debugMatcher = (matcher, sourceText, options = {}) => (
 	({timing: options.timing = false} = options),
@@ -38,7 +38,7 @@ debugMatcher.matches = (matches, options = {}) => {
 			if (!match) continue;
 			format = '';
 			const {0: string, index, identity, entity, capture, input, ...properties} = match;
-			let {[LOOKAHEAD]: lookahead, [INSET]: inset, [OUTSET]: outset, [DELIMITER]: delimiter} = capture;
+			let {[DELIMITER]: delimiter, [UNKNOWN]: unknown} = capture;
 			const values = [];
 			const delta = (properties.index = index) - (properties.lastIndex = lastIndex);
 			const skipped = (properties.skipped = lastIndex > 0 &&
@@ -69,8 +69,9 @@ debugMatcher.matches = (matches, options = {}) => {
 				format = '';
 			}
 
-			inset !== undefined && (properties.inset = inset);
-			outset !== undefined && (properties.outset = outset);
+			// inset !== undefined && (properties.inset = inset);
+			// outset !== undefined && (properties.outset = outset);
+			unknown !== undefined && (properties.unknown = unknown);
 			delimiter !== undefined && (properties.delimiter = delimiter);
 
 			const overlap = (properties.overlap = (delta < 0 && string.slice(0, 1 - delta)) || '');
@@ -90,17 +91,20 @@ debugMatcher.matches = (matches, options = {}) => {
 			);
 
 			{
-				const start = (inset && inset.length) || 0;
-				const end = (delimiter && -delimiter.length) || undefined;
-				const lines = string.slice(start, end).split(`\n${inset || ''}`);
-				inset = (inset && (method !== 'render' ? inset.replace(/ /g, SPACE).replace(/\t/g, TAB) : inset)) || '';
+				// const start = (inset && inset.length) || 0;
+				// const end = (delimiter && -delimiter.length) || undefined;
+				// const lines = string.slice(start, end).split(`\n${inset || ''}`);
+				// inset = (inset && (method !== 'render' ? inset.replace(/ /g, SPACE).replace(/\t/g, TAB) : inset)) || '';
+				// const lineFormat = `%c%s%c%s%c`;
+				const lines = string.slice(0, (delimiter && -delimiter.length) || undefined).split(/\n|\r\n/g);
+				const lineFormat = `%c%s%c`;
 				values.push(
 					...lines.flatMap((line, index) => [
 						`${INITIAL} /* border: 1px solid ${color}90; */ color: ${color};${(!index &&
 							` --color: ${color}; --details: "${details}";`) ||
 							''}`,
-						`${INITIAL} border: 1px solid ${color}90; background: ${color}EE; color: white; font-weight: 300;`,
-						inset || '\u200D',
+						// `${INITIAL} border: 1px solid ${color}90; background: ${color}EE; color: white; font-weight: 300;`,
+						// inset || '\u200D',
 						`${INITIAL} border: 1px solid ${color}90; color: ${color}90; background: ${color}11; font-weight: 500; text-shadow: 0 0 0 #999F;`,
 						line || '\u200D',
 						INITIAL,
@@ -108,7 +112,7 @@ debugMatcher.matches = (matches, options = {}) => {
 				);
 				format += `%c${identity.padStart(
 					SEGMENT_MARGIN.length - 1,
-				)}\u{00A0}%c%s%c%s%c${`%c\n${SEGMENT_MARGIN}%c%s%c%s%c`.repeat(lines.length - 1)}`;
+				)}\u{00A0}${lineFormat}${`%c\n${SEGMENT_MARGIN}${lineFormat}`.repeat(lines.length - 1)}`;
 
 				(delimiter =
 					(delimiter && (method !== 'render' ? delimiter.replace(/ /g, SPACE).replace(/\t/g, TAB) : delimiter)) || ''),
@@ -119,15 +123,6 @@ debugMatcher.matches = (matches, options = {}) => {
 					),
 					(format += `%c%s%c`);
 			}
-
-			lookahead !== undefined &&
-				(values.push(
-					`${INITIAL} border: 1px solid #99999911; color: #99999999;`,
-					`${JSON.stringify(`${(properties.lookahead = lookahead).slice(0, 5)}${lookahead.length > 5 ? '…' : ''}`)
-						.replace(/\\\\/g, '\\')
-						.replace(/^"(.*)"$/, '$1')}`,
-				),
-				(format += `%c%s`));
 
 			logs.push([method, [`${format}`.trimRight(), ...values.splice(0, values.length)]]);
 
