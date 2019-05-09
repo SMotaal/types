@@ -140,6 +140,20 @@ class Matcher extends RegExp {
 		Object.defineProperty(Matcher, 'sequence', {value: Object.freeze(sequence), enumerable: true, writable: false});
 		return sequence;
 	}
+
+	static get join() {
+		const {sequence} = this;
+
+		const join = (...values) =>
+			values
+				.map(sequence.span)
+				.filter(Boolean)
+				.join('|');
+
+		Object.defineProperty(Matcher, 'join', {value: Object.freeze(join), enumerable: true, writable: false});
+
+		return join;
+	}
 }
 
 export const {
