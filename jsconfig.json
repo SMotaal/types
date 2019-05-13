@@ -1,0 +1,24 @@
+﻿{
+	"compilerOptions": {
+		// "module": "esnext",
+		"target": "esnext",
+		// "jsx": "preserve",
+		// "checkJs": false,
+		"noEmit": true,
+		"rootDir": ".",
+		"baseUrl": ".",
+		"paths": {"/*": ["*"]},
+		"skipDefaultLibCheck": true,
+		"skipLibCheck": true
+	},
+	"exclude": [
+		"node_modules",
+		"**/node_modules/*",
+		"trash",
+		"**/trash/*",
+		"[[]trash[]]",
+		"**/[[]trash[]]/*",
+		"[[]more[]]",
+		"**/[[]more[]]/*"
+	]
+}
