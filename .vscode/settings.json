@@ -54,6 +54,10 @@
 	"cSpell.enabledLanguageIds": ["html", "markdown"],
 	"cSpell.showStatus": true,
 	"cSpell.language": "en",
+	"javascript.implicitProjectConfig.checkJs": true,
+	"path-intellisense.mappings": {
+		"/": "${workspaceRoot}/"
+	},
 	"files.associations": {
 		"*.mo": "markdown",
 		"*.mout": "markdown",
