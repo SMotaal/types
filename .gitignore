@@ -5,6 +5,7 @@ trash/
 /console/
 /esm/
 /experimental/
+/experimental-modules-shim/
 /helpers/
 /markup/
 /meta/
