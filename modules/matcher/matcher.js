@@ -25,6 +25,9 @@ class Matcher extends RegExp {
 		this.entities = entities;
 		/** @type {T} */
 		this.state = state;
+		this.capture = this.capture;
+		this.exec = this.exec;
+		// this.test = this.test;
 		({
 			// LOOKAHEAD: this.LOOKAHEAD = Matcher.LOOKAHEAD,
 			// INSET: this.INSET = Matcher.INSET,
