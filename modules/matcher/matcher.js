@@ -219,6 +219,4 @@ export const {
 /** @template {RegExpMatchArray | RegExpExecArray} T @typedef {MatcherMatchResult} Matcher.MatchResult<T> */
 /** @template {RegExp} T @typedef {MatcherIterator} Matcher.Iterator<T> */
 
-// /** @template {RegExp} T  @typedef {IterableIterator<T extends Matcher ? Matcher.Match : RegExpMatchArray>} Matcher.Iterator */
-
 export {Matcher};
