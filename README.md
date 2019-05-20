@@ -13,9 +13,10 @@
 
 </h1>
 
-<div align=center style="display: grid">
+<!-- <div align=center style="display: grid; grid-gap: 1em; place-content: space-around;"> -->
+<div align=center>
 
-<table>
+<table width=90%>
 
 <thead><tr><th colspan=2>
 
@@ -23,25 +24,32 @@
 
 <tbody>
 
+<tr><th><code>0.0.0-alpha.5</code><td>
+
+- Refactor everything markout (into `/markout/…`)
+- Add support for `@media(prefers-color-scheme: dark)`
+- Integrate new Matcher-based ECMAScript tokenizer
+
 <tr><th><code>0.0.0-alpha.4</code><td>
 
-Using all-markout links (ie `/markout/#/…`)
+- Using all-markout links (ie `/markout/#/…`)
 
 <tr><th><code>0.0.0-alpha.3</code><td>
 
-Using flat structure with `http-server` proxy
+- Using flat structure with `http-server` proxy
 
 <tr><th><code>0.0.0-alpha.2</code><td>
 
-Using `yarn` workspaces to `../`
+- Using `yarn` workspaces to `../`
 
-<tr><th><code>0.0.0-alpha.0</code><td>
+<tr><th><code>0.0.0-alpha.1</code><td>
 
-Using symbolic links to `node_moudles/@smotaal`
+- Using symbolic links to `node_moudles/@smotaal`
 
 </table>
 
-<table>
+<table width=90%>
+
 <thead><tr><th>
 
 ### Development
