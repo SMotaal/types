@@ -6,9 +6,7 @@
 
 	async navigate(src) {
 		const {frame, registered} = this;
-		// await (document.readyState === 'complete' ||
-		// 	new Promise(resolve => document.addEventListener('readystatechange', resolve, {once: true})));
-		frame && 'src' in frame && (await this.registered, (frame.src = src));
+		frame && 'src' in frame && (await this.registered, await new Promise(requestAnimationFrame), (frame.src = src));
 	}
 
 	async prefetch(src) {}
@@ -98,7 +96,6 @@
 	static get defaults() {
 		return defaults;
 	}
-
 }
 
 const defaults = {};

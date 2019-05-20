@@ -1,4 +1,6 @@
-﻿# smotaal.io/sandbox
+﻿# Sandbox › Experiments › Service Workers
+
+> **Important Note**: This work is currently on hold.
 
 ## Phase 1
 

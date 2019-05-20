@@ -1,8 +1,22 @@
-﻿# `smotaal.io/sandbox/experiments`
+﻿# Sandbox › Experiments
+
+## Previous Experiments
+
+- [Service Workers › Remapping `demo`](./service-workers/remapping/index.html)
+- [Service Workers › Rerouting `demo`](./service-workers/rerouting/index.html)
+
+<details><summary>Notes</summary>
 
 ## Features
 
+### Sandboxing
+
+- [WHATWG - HTML - Loading - Sandboxing](https://html.spec.whatwg.org/multipage/origin.html#sandboxing)
+
 ### Complex Requests
+
+- [WHATWG - Fetch - Request - Destination](https://fetch.spec.whatwg.org/#concept-request-destination)
+- [WHATWG - Fetch - Request - Mode](https://fetch.spec.whatwg.org/#concept-request-mode)
 
 ---
 
@@ -51,3 +65,5 @@
 ## Resources
 
 - [Google's Service Worker Recipes on GitHub](https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker)
+
+</details>

@@ -166,7 +166,7 @@ export class SandboxFrameElement extends Component {
 
 try {
 	SandboxFrameElement.shadowRoot = {mode: 'closed'};
-	SandboxFrameElement.observedAttributes = Attributes.from(['src']);
+	SandboxFrameElement.observedAttributes = Attributes.from(['src', 'worker']);
 	SandboxFrameElement.styles = styles;
 	SandboxFrameElement.template = html`
 		<div id="wrapper">

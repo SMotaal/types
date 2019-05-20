@@ -43,7 +43,7 @@ const styles = css`
 	#toolbar {
 		grid-area: toolbar;
 		background-color: #9991;
-		font-size: 125%;
+		/* font-size: 125%; */
 	}
 
 	#content {
