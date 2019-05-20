@@ -84,8 +84,9 @@ class Matcher extends RegExp {
 	/**
 	 * @param {Matcher.PatternFactory} factory
 	 * @param {Matcher.Flags} [flags]
+	 * @param {PropertyDescriptorMap} [properties]
 	 */
-	static define(factory, flags) {
+	static define(factory, flags, properties) {
 		/** @type {MatcherEntities} */
 		const entities = [];
 		entities.flags = '';
@@ -102,8 +103,12 @@ class Matcher extends RegExp {
 			}
 		});
 		flags = Matcher.flags('g', flags == null ? pattern.flags : flags, entities.flags);
-		return new ((this && (this.prototype === Matcher.prototype || this.prototype instanceof RegExp) && this) ||
+		const matcher = new ((this && (this.prototype === Matcher.prototype || this.prototype instanceof RegExp) && this) ||
 			Matcher)(pattern, flags, entities);
+
+		properties && Object.defineProperties(matcher, properties);
+
+		return matcher;
 	}
 
 	static flags(...sources) {
