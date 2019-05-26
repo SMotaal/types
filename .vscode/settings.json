@@ -14,7 +14,9 @@
 		"**/archive": true,
 		"**/trash": true,
 		"**/dist": true,
-		"**/[more]": true
+		"**/[more]": true,
+		"**/[trash]": true,
+		"**/.git": true
 	},
 	"files.watcherExclude": {
 		"packages/markout": true,
