@@ -1,0 +1,724 @@
+﻿[
+	{
+		"name": "polyestr-utils",
+		"description": "A set of utilities shared by the various modules that build into the eco-system of Polyestr.",
+		"version": "1.0.0-alpha.3",
+		"published": {
+			"year": "2017"
+		}
+	},
+	{
+		"name": "polyestr-tsx-lit-transform",
+		"description": "A TypeScript TSX-to-template-literal transform that builds into the eco-system of Polyestr.",
+		"version": "1.0.0-alpha.2",
+		"published": {
+			"year": "2017"
+		}
+	},
+	{
+		"name": "mdon",
+		"description": "Stupid simple inline markdown fields used by the Polyestr application framework.",
+		"version": "1.0.0-alpha.7",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "settled",
+		"description": "Natural-language minimal-input decision-making automation for hackers",
+		"version": "0.0.0-develop.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "elyte",
+		"description": "Under development",
+		"version": "0.0.0-develop.0b",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "daskit",
+		"description": "The utility kit (one of them).",
+		"version": "0.0.0-develop.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "das-toolkit",
+		"description": "The Toolkit",
+		"version": "0.0.0-develop.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "typescript-lit-css-plugin",
+		"description": "TypeScript language service plugin that adds IntelliSense for CSS tagged templates",
+		"version": "0.0.0-develop.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "das-templates",
+		"description": "The framework for extensible templates",
+		"version": "0.0.0-develop.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "lit-dom",
+		"description": "Like lit-html but more abstract",
+		"version": "0.0.0-develop.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "lit-kit",
+		"description": "Barebone Lit-HTML based Web Components",
+		"version": "0.0.0-develop.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "@smotaal/node-loader-evaluate-once",
+		"description": "Node loader mixin to prevent more than one call to module.evaluate",
+		"version": "0.0.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "@smotaal/node-loader-hash-format",
+		"description": "Node loader mixin to coerce resolve module formats based on hash",
+		"version": "0.0.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "quench",
+		"description": "Quick Benchmarks",
+		"version": "0.0.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "typescript-local",
+		"description": "Wrapper exposing typescript/built/local for experimental use",
+		"version": "0.0.1",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "imaging-js",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"year": "2018"
+		}
+	},
+	{
+		"name": "markout",
+		"description": "",
+		"version": "0.0.1",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "gistout",
+		"description": "Full-stack runnable Gists based on MarkOut",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "hashout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "loadout",
+		"description": "Experimental Markout module loader for node and the browser",
+		"version": "0.0.2",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "nodeout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "sourceout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "docout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "mapout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "codeout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "benchout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "specout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "mashout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "parseout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "pushout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "packout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "styleout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "appout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "bundleout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "noteout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "wrapout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "panout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "figureout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "playout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "streamout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "plotout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "dumpout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "scopeout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "spinout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "showout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "syncout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "@smotaal/markout",
+		"description": "Runnable Markdown",
+		"version": "0.0.2",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "motherbugger",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "draftout",
+		"description": "Full-stack runnable Gists based on MarkOut",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "unfence",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "unfenced",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "fenceout",
+		"description": "Experimental Markout unfencing for node and the browser",
+		"version": "0.0.2",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "serveout",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "sans-node",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "disfunctional",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "june",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "valeo",
+		"description": "Experimental bare-bones reactive programming using standard ES syntax",
+		"version": "0.0.1",
+		"published": {
+			"month": "july",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "monaco-es",
+		"description": "Configurable Monaco Editor (ECMAScript) modules using Rollup",
+		"version": "0.0.7",
+		"published": {
+			"month": "september",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "asynchronously-express",
+		"description": "Pure async functions as Express middleware",
+		"version": "0.1.0",
+		"published": {
+			"month": "july",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "duly",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "july",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "duely",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "july",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "node-sans",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "july",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "rolloff",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "july",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "sansical",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "july",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "prototypical",
+		"description": "Modular JavaScript builtins and helpers",
+		"version": "0.0.0",
+		"published": {
+			"month": "august",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "markie",
+		"description": "Markdown inline expressions",
+		"version": "0.0.0",
+		"published": {
+			"month": "september",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "perpetra",
+		"description": "Experimental tooling for adventurous humans",
+		"version": "0.0.0",
+		"published": {
+			"month": "september",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "octothorp",
+		"description": "A collection of themable CSS primitives",
+		"version": "0.0.0",
+		"published": {
+			"month": "september",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "fragma",
+		"description": "Declarative HTML templating for Web Components",
+		"version": "0.0.0",
+		"published": {
+			"month": "september",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "thorpe",
+		"description": "Unified themeable UI primitives",
+		"version": "0.0.0",
+		"published": {
+			"month": "october",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "pseudom",
+		"description": "Documentless OM for markup",
+		"version": "0.0.5",
+		"published": {
+			"month": "march",
+			"year": "2019"
+		}
+	},
+	{
+		"name": "espressions",
+		"description": "Lightweight ECMAScript SourceText processor",
+		"version": "0.0.0",
+		"published": {
+			"month": "november",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "@smotaal/tokenizer",
+		"description": "Nestable markup tokenizer using Regular Expressions",
+		"version": "0.0.5",
+		"published": {
+			"month": "march",
+			"year": "2019"
+		}
+	},
+	{
+		"name": "conres.js",
+		"description": "Contrast-Resolution Analyzer",
+		"version": "0.0.0",
+		"published": {
+			"month": "december",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "stripless",
+		"description": "",
+		"version": "0.0.1",
+		"published": {
+			"month": "december",
+			"year": "2018"
+		}
+	},
+	{
+		"name": "prototyping",
+		"description": "Runtime prototyping abstractions & tools",
+		"version": "0.0.0",
+		"published": {
+			"month": "january",
+			"year": "2019"
+		}
+	},
+	{
+		"name": "conres",
+		"description": "",
+		"version": "0.0.0",
+		"published": {
+			"month": "january",
+			"year": "2019"
+		}
+	},
+	{
+		"name": "@smotaal/readme",
+		"description": "README.md",
+		"version": "0.0.0",
+		"published": {
+			"month": "january",
+			"year": "2019"
+		}
+	},
+	{
+		"name": "little-peg",
+		"description": "",
+		"version": "0.0.0-alpha.0",
+		"published": {
+			"month": "march",
+			"year": "2019"
+		}
+	},
+	{
+		"name": "tiny-peg",
+		"description": "",
+		"version": "0.0.0-alpha.0",
+		"published": {
+			"month": "march",
+			"year": "2019"
+		}
+	},
+	{
+		"name": "@smotaal/grammars",
+		"description": "Regular expression markup grammars",
+		"version": "0.0.0",
+		"published": {
+			"month": "march",
+			"year": "2019"
+		}
+	},
+	{
+		"name": "ses-frame",
+		"description": "Secure EcmaScript iframe container",
+		"version": "0.0.0",
+		"published": {
+			"month": "april",
+			"year": "2019"
+		}
+	},
+	{
+		"name": "jessie-frame",
+		"description": "Jessica iframe container",
+		"version": "0.0.0",
+		"published": {
+			"month": "april",
+			"year": "2019"
+		}
+	}
+]

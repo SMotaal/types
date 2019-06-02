@@ -1,0 +1,50 @@
+﻿---
+@smotaal
+
+markie mdon daskit settled prototyping
+duly valeo duely motherbugger
+stripless disfunctional sansical prototypical
+quench fragma pseudom perpetra
+
+markout hashout draftout
+benchout specout parseout
+figureout plotout playout fenceout
+packout pushout wrapout mashout rolloff
+serveout streamout loadout spinout
+
+unfence unfenced
+
+ses-frame jessie-frame
+conres conres.js
+
+@smotaal/node-loader-evaluate-once
+@smotaal/node-loader-hash-format
+@smotaal/markout @smotaal/tokenizer @smotaal/grammars
+@smotaal/readme
+
+---
+
+@thenerdyguy
+
+gistout nodeout sourceout docout mapout codeout styleout appout bundleout noteout panout dumpout scopeout syncout showout
+octothorp thorpe
+espressions little-peg tiny-peg
+
+---
+
+DELETING
+
+asynchronously-express
+das-templates
+das-toolkit
+elyte
+imaging-js
+lit-dom
+lit-kit
+monaco-es
+node-sans
+polyestr-tsx-lit-transform
+polyestr-utils
+sans-node
+typescript-lit-css-plugin
+typescript-local
