@@ -33,21 +33,24 @@ export const darkMode = (document => {
 
 	const disable = auto => toggle(false, auto);
 
+	const timeout = Symbol('toggler.timeout');
+	const resetting = Symbol('toggler.resetting');
+
 	const toggler = Object.assign(document.createElement('a'), {
 		id: 'dark-mode-toggler',
 		innerHTML: `<i icon>&#x${'☽'.codePointAt(0).toString(16)}</i>`,
 		title: 'Toggle Dark/Light Mode\n\nNote: Hold for 2 seconds to switch to auto where supported.',
 		onmousedown() {
-			clearTimeout(this.timeout);
-			this.timeout = setTimeout(() => {
+			clearTimeout(this[timeout]);
+			this[timeout] = setTimeout(() => {
 				toggle('auto');
-				this.resetting = true;
+				this[resetting] = true;
 				console.log('Reset dark mode!');
 			}, 2000);
 		},
 		onmouseup() {
-			this.timeout = clearTimeout(this.timeout);
-			this.resetting === true ? (this.resetting = false) : toggle();
+			this[timeout] = clearTimeout(this[timeout]);
+			this[resetting] === true ? (this[resetting] = false) : toggle();
 		},
 		style: `
 			border: 1px solid #999;
