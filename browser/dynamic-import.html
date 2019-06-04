@@ -1,0 +1,34 @@
+﻿<script type="module">
+	import dynamicImport from './dynamic-import.js';
+	// import * as di from './dynamic-import.js';
+
+	// console.log(String(di));
+
+	(async () => {
+		const fixtures = ['import.meta.js'].flatMap(specifier => [
+			`./fixtures/${specifier}`,
+			`https://smotaal.io/browser/fixtures/${specifier}`,
+		]);
+
+		const specifiers = [...fixtures, './not a real module.js', 'invalid:///?#', 'https://unpkg.com/@smotaal/tokenizer'];
+
+		const results = {};
+		const promises = [];
+
+		for (const specifier of specifiers) {
+			const result = (results[specifier] = {});
+			promises.push(
+				dynamicImport(specifier)
+					.then(namespace => (result.namespace = namespace))
+					.catch(error => (result.error = `${error}`)),
+			);
+		}
+
+		await Promise.race([Promise.all(promises), new Promise(resolve => setTimeout(resolve, 5000))]);
+
+		// .then(namespaces => console.log(namespaces.map(s => Object.prototype.toString.call(s))))
+
+		console.table(results, 'error');
+		typeof chrome === 'object' || console.log(results);
+	})();
+</script>
