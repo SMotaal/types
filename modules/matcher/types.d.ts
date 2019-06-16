@@ -1,6 +1,6 @@
 ﻿//@ts-check
 
-type Matcher = import('./matcher');
+type Matcher = import('./matcher').Matcher;
 type MatcherFlags = string;
 type MatcherText = string | {toString(): string};
 

@@ -1,10 +1,12 @@
 ﻿import {matchAll, DELIMITER, UNKNOWN} from './matcher.js';
 
+/** @param {Matcher} matcher @param {string} sourceText @param {Options} [options] */
 export const debugMatcher = (matcher, sourceText, options = {}) => (
 	({timing: options.timing = false} = options),
 	debugMatcher.matches(debugMatcher.matchAll(matcher, sourceText, options), options)
 );
 
+/** @param {Matcher} matcher @param {string} sourceText @param {Options} [options] */
 debugMatcher.matchAll = (matcher, sourceText, options = {}) => {
 	const {timing = false} = options;
 	const stamp = `${(timing === true && `-${Date.now()}`) || timing || ''}`;
@@ -14,6 +16,7 @@ debugMatcher.matchAll = (matcher, sourceText, options = {}) => {
 	return options.matches;
 };
 
+/** @param {Matches} matches @param {Options} options */
 debugMatcher.matches = (matches, options = {}) => {
 	const {
 		method = 'log',
@@ -38,6 +41,7 @@ debugMatcher.matches = (matches, options = {}) => {
 			if (!match) continue;
 			format = '';
 			const {0: string, index, identity, entity, capture, input, ...properties} = match;
+			//@ts-ignore
 			let {[DELIMITER]: delimiter, [UNKNOWN]: unknown} = capture;
 			const values = [];
 			const delta = (properties.index = index) - (properties.lastIndex = lastIndex);
@@ -194,3 +198,9 @@ render: {
 	render.console = (...logs) => void logs.map(render.console.entry);
 	render.console.entry = ([method, args]) => void (method in console && Reflect.apply(console[method], console, args));
 }
+
+/** @typedef {import('./matcher.types').Matcher} Matcher */
+/** @typedef {import('./matcher.types').Matcher.MatchResultsArray} Matches */
+/** @typedef {import('./matcher.types').Matcher.DebugOptions} Options */
+/** @typedef {import('./matcher.types').Matcher.DebugOptions.InternalDebugOptions} InternalOptions */
+/** @typedef {import('./matcher.types').Matcher.DebugOptions.ExternalOptions} ExternalOptions */
