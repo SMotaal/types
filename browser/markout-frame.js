@@ -48,7 +48,7 @@ export const createResizeObserver = handler => {
 						(this.interval = this.interval > 0 && this.interval < Infinity ? Number(this.interval) : 1000),
 					);
 					this.update();
-					console.log(this, {...this});
+					// console.log(this, {...this});
 				},
 			}.connect),
 			disconnect: observer.disconnect = (ResizeObserverPrototype.disconnect = {
@@ -58,27 +58,23 @@ export const createResizeObserver = handler => {
 			}.disconnect),
 		} = ResizeObserverPrototype);
 	}
-	// for (const propertyName of ['connect', 'disconnect', 'handler', 'observer', 'update']) {
-	// 	Object.defineProperty(observer, propertyName, {value: observer[propertyName], writable: false});
-	// }
-
-	// console.log({ResizeObserverPrototype, observer});
 	return observer;
 };
 
 export const resizeFrameElement = async () => {
 	if (!frameElement) return;
 
-	frameElement.width = '100%';
-	frameElement.height = '0';
-
 	'resizeObserver' in document ||
 		Object.defineProperty(document, 'resizeObserver', {
-			value: createResizeObserver(() => void (frameElement.height = document.body.scrollHeight)),
+			value: createResizeObserver(
+				((frameElement.width = '100%'),
+				(frameElement.height = '0'),
+				(frameElement.updateHeight = () => void (frameElement.height = document.body.scrollHeight)),
+				() => requestAnimationFrame(frameElement.updateHeight)),
+			),
 			writable: false,
-		});
+		}).resizeObserver.connect();
 
-	document.resizeObserver.connect();
 	// document.resizeObserver.update();
 
 	await new Promise(setTimeout);
