@@ -175,6 +175,7 @@ export const {
 		return source => /[\\^$*+?.()|[\]{}]/g[replace](source, '\\$&');
 	})())),
 	sequence,
+	join,
 	matchAll = (Matcher.matchAll =
 		/**
 		 * @template {RegExp} T
