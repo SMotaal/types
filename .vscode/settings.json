@@ -1,5 +1,6 @@
 {
 	"search.exclude": {
+		"packages/specs": true,
 		"packages/markout": true,
 		"components": false,
 		"console": false,
@@ -19,6 +20,7 @@
 		"**/.git": true
 	},
 	"files.watcherExclude": {
+		"packages/specs": true,
 		"packages/markout": true,
 		"components": false,
 		"console": false,
@@ -38,7 +40,6 @@
 		"**/[more]": true
 	},
 	"files.exclude": {
-		// "packages/markout": true,
 		"components": false,
 		"console": false,
 		"esm": false,

@@ -98,8 +98,8 @@ export const darkMode = (document => {
 					prefersDarkMode === true || prefersLightMode.matches !== true,
 					!!(localStorage.darkMode = darkMode.state = 'auto'),
 			  );
-		prefersDarkMode.addListener(({matches = false}) => toggle(!!matches, true));
-		prefersLightMode.addListener(({matches = false}) => toggle(!matches, true));
+		prefersDarkMode.addListener(({matches = false}) => matches === true && toggle(!!matches, true));
+		prefersLightMode.addListener(({matches = false}) => matches === true && toggle(!matches, true));
 	})(matchMedia('(prefers-color-scheme: dark)'), matchMedia('(prefers-color-scheme: light)'));
 
 	return (document.darkMode = darkMode);

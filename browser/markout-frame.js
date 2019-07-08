@@ -61,19 +61,43 @@ export const createResizeObserver = handler => {
 	return observer;
 };
 
+export const debounce = ƒ => {
+	const debounce = () => {
+		debounce.frame === undefined || (cancelAnimationFrame(debounce.frame), (debounce.frame = undefined));
+		debounce.frame = requestAnimationFrame(debounce.function);
+	};
+	Object.defineProperty(debounce, 'function', {value: ƒ, writable: false});
+	return debounce;
+};
+
 export const resizeFrameElement = async () => {
 	if (!frameElement) return;
 
-	'resizeObserver' in document ||
+	let resize;
+
+	if (!('resizeObserver' in document)) {
+		frameElement.width = '100%';
+		frameElement.height = '0';
+
+		frameElement.updateHeight = debounce(() => void (frameElement.height = document.body.scrollHeight));
+
 		Object.defineProperty(document, 'resizeObserver', {
-			value: createResizeObserver(
-				((frameElement.width = '100%'),
-				(frameElement.height = '0'),
-				(frameElement.updateHeight = () => void (frameElement.height = document.body.scrollHeight)),
-				() => requestAnimationFrame(frameElement.updateHeight)),
-			),
+			value: createResizeObserver(frameElement.updateHeight),
 			writable: false,
 		}).resizeObserver.connect();
+
+		document.defaultView.addEventListener('resize', frameElement.updateHeight);
+	}
+	// (document.defaultView.addEventListener('resize', () => requestAnimationFrame(frameElement.updateHeight)),
+	// Object.defineProperty(document, 'resizeObserver', {
+	// 	value: createResizeObserver(
+	// 		((frameElement.width = '100%'),
+	// 		(frameElement.height = '0'),
+	// 		(frameElement.updateHeight = () => void (frameElement.height = document.body.scrollHeight)),
+	// 		() => requestAnimationFrame(frameElement.updateHeight)),
+	// 	),
+	// 	writable: false,
+	// }).resizeObserver.connect());
 
 	// document.resizeObserver.update();
 
