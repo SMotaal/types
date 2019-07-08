@@ -1,13 +1,16 @@
 ﻿# Modules
 
+## DOM
+
+- [Webkit Pseudo-Element Selectors (Shadow DOM Elements)](https://gist.github.com/afabbro/3759334)
+
+- [layout-instability-api](https://web.dev/layout-instability-api/?utm_source=CSS-Weekly&utm_campaign=Issue-370&utm_medium=web)
+
 ## Parsing
 
-### Where the Focus
-
 - Constructs
-  - [ ] Bindings
 
-### What to Fix
+  - [ ] Bindings
 
 - Last line comment terminator
 - Solidus after `{`
@@ -16,7 +19,7 @@
 
 ## Browser
 
-### Where the Focus
+### Where the focus
 
 - Compartments
 - Endowments
@@ -25,8 +28,6 @@
 # Deployment
 
 ## NPM
-
-### What to Fix
 
 - [x] Delete old orgs
 

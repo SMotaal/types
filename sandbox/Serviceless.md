@@ -1,4 +1,4 @@
-﻿# Serveless Sandboxing
+﻿# Serviceless Sandboxing
 
 - Sandbox playground (custom-element browser thingy)
 - Investigate what the actual `<iframe srcdoc="…">.contentWindow.location` is.
