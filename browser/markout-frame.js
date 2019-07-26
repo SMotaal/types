@@ -71,35 +71,29 @@ export const debounce = ƒ => {
 };
 
 export const resizeFrameElement = async () => {
-	if (!frameElement) return;
+	let updateHeight;
+	if ('resizeObserver' in document) return;
+	if (document.defaultView !== document.defaultView.parent) {
+		document.body.style.minHeight = document.body.style.maxHeight = document.body.style.height = document.body.style.overflowY =
+			'initial';
+	}
 
-	let resize;
-
-	if (!('resizeObserver' in document)) {
+	if (!frameElement) {
+		return;
+		// updateHeight = debounce(() => {
+		// 	window.resizeTo(window.outerWidth, document.documentElement.scrollWidth);
+		// });
+	} else {
 		frameElement.width = '100%';
 		frameElement.height = '0';
-
-		frameElement.updateHeight = debounce(() => void (frameElement.height = document.body.scrollHeight));
-
-		Object.defineProperty(document, 'resizeObserver', {
-			value: createResizeObserver(frameElement.updateHeight),
-			writable: false,
-		}).resizeObserver.connect();
-
-		document.defaultView.addEventListener('resize', frameElement.updateHeight);
+		updateHeight = debounce(() => void (frameElement.height = document.documentElement.scrollHeight));
 	}
-	// (document.defaultView.addEventListener('resize', () => requestAnimationFrame(frameElement.updateHeight)),
-	// Object.defineProperty(document, 'resizeObserver', {
-	// 	value: createResizeObserver(
-	// 		((frameElement.width = '100%'),
-	// 		(frameElement.height = '0'),
-	// 		(frameElement.updateHeight = () => void (frameElement.height = document.body.scrollHeight)),
-	// 		() => requestAnimationFrame(frameElement.updateHeight)),
-	// 	),
-	// 	writable: false,
-	// }).resizeObserver.connect());
 
-	// document.resizeObserver.update();
+	document.defaultView.addEventListener('resize', updateHeight);
+	Object.defineProperty(document, 'resizeObserver', {
+		value: createResizeObserver(updateHeight),
+		writable: false,
+	}).resizeObserver.connect();
 
 	await new Promise(setTimeout);
 };
