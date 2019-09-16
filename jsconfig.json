@@ -4,12 +4,14 @@
 		"target": "esnext",
 		// "jsx": "preserve",
 		// "checkJs": false,
+		"keyofStringsOnly": false,
 		"noEmit": true,
 		"rootDir": ".",
 		"baseUrl": ".",
 		"paths": {
 			"/packages/specs/*": ["/specs/*"],
 			"/packages/markout/*": ["/markout/*"],
+			"@smotaal/matcher": ["/markup/packages/matcher"],
 			"/*": ["*"]
 		},
 		"forceConsistentCasingInFileNames": true,
