@@ -668,10 +668,10 @@ function createCurrentUnsafeRec() {
  * and does not reduces the compatibility of the shim. The motivation for
  * this limitation was to decrease the complexity of the implementation,
  * and to maintain a resonable level of performance.
- * Note: \w is equivalent [a-zA-Z_0-9]
+ * Note: \w is equivalent [0-9A-Z_a-z]
  * See 11.6.1 Identifier Names
  */
-const identifierPattern = /^[a-zA-Z_$][\w$]*$/;
+const identifierPattern = /^[A-Z_a-z$][\w$]*$/;
 
 /**
  * In JavaScript you cannot use these reserved words as variables.
