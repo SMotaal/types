@@ -45,6 +45,7 @@
 	"workspaces": {
 		"packages": [
 			"components",
+			"conres",
 			"console",
 			"esm",
 			"experimental",
@@ -52,7 +53,9 @@
 			"packages/markout",
 			"markup",
 			"pholio",
-			"quench"
+			"quench",
+			"tasks",
+			"tests"
 		],
 		"nohoist": [
 			"**/pseudom"
