@@ -1,18 +1,18 @@
 # Project-specific files
 
 trash/
-/components/
-/conres/
-/console/
-/esm/
-/experimental/
-/experimental-modules-shim/
-/helpers/
-/markup/
-/meta/
-/pholio/
-/quench/
-/vscode-frictionless-theme/
+/components
+/conres
+/console
+/esm
+/experimental
+/experimental-modules-shim
+/helpers
+/markup
+/meta
+/pholio
+/quench
+/vscode-frictionless-theme
 package-lock.json
 yarn.lock
 
