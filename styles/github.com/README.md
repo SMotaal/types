@@ -25,7 +25,7 @@ I personally, was an early adopter of Dark Mode, not because it is cool, but bec
 
 ---
 
-## Initial Thoughts and Effort
+## Initial Thoughts
 
 To me, GitHub presents a perfect opportunity. It has an astounding reach, UX/UI complexities, and more importantly, it is iconic in its adherence to the use-the-platform philosophy.
 
