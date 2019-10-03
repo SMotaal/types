@@ -1,20 +1,29 @@
-﻿# Blending Auto Dark Mode onto github.com
+﻿<center>
+<br/>
 
-This document details how I monkey-patched the modern vanilla _CSS_ way responsive Dark Mode onto GitHub.
+# <p>☾</p>Responsive Dark Mode for Github
 
-## Why So… Stupid!
+### <kbd>CSS</kbd> <kbd>Monkey-Patching</kbd> <kbd>Frictionless</kbd>
 
-It might seem like a waste of time, for someone to monkey-patch over built _CSS_ artifacts when there are actual _SCSS_ files to extrapolate from.
+<q>But it might seem like a waste of time, for someone to monkey-patc
+h built _CSS_ artifacts instead of patching the _SCSS_ sources…</q>
 
-Truth be told, you are right, but _SCSS_ is not _CSS_. Yet, the fact that _SCSS_ was initially conceived to close a gap in _CSS_ is one thing, but the fact that even through _CSS_ and browsers have since evolved to offer standard alternatives that are being ignored by a legacy of so called _best practices_ is something to ponder.
+Truth be told, you are right, but _SCSS_ is not _CSS_!
+
+<br/>
+</center>
+
+_SCSS_ was initially conceived to close gaps in legacy _CSS_. Browsers have since evolved to offer standard _CSS_ alternatives, and all those are being ignored in mainstream due to residual legacy and _best practices_ myth.
+
+> Something to for the reader to ponder, if _SCSS_ was meant to improve development cycles, why is it taking GitHub and many others using it such a long time to add support for Dark Mode.
 
 Senior developers should ask themselves if they are really caught up with the specs. Or, if they are really just happy in a comfort zone of their own choosing. By insisting to opt for abstractions of yesterday, and parroting the wisdom of it, we are perpetuating this façade where you are always right, by show of hand.
 
-But for someone who is discovering their own atypical accessibility needs, I could not afford to not break away from the pack, as much as I want to respect rank and tradition, I cannot tell myself enough to somehow magically not see an up-side-down here.
+But for some who is discovering their own accessibility needs, we cannot always afford to not break away from the pack, because as much as we want to respect rank and tradition, we cannot ignore accessibility aspects that cannot be solved as effectively with all those unnecessary complexities getting in the way.
 
-So, I was an early adopter of Dark Mode, and not because it is cool, but because it forced deeper questions of how cascading _CSS_ really is, if done correctly, and what that looks like when used to **toggle** very specific properties globally.
+I personally, was an early adopter of Dark Mode, not because it is cool, but because it is a necessity for me to do my work. Having to do all this without _SCSS_ gave me great insights and forced deeper questions of how cascading can be used effectively to **toggle** very specific _CSS_ properties globally.
 
-And when I consider the _SCSS_ legacy and practice, I wonder, if so, why has this taken GitHub, with their rather minimalistic _color_ complexities, so long to implement.
+---
 
 ## Initial Thoughts and Effort
 
@@ -24,7 +33,7 @@ To me, GitHub presents a perfect opportunity. It has an astounding reach, UX/UI 
 
 At first glance, you see their emphasis neutrals and contrast in all _stub matter_, along with a high degree of color coordination for _hint matter_.
 
-To put this in perspective, we can say _stub matter_ is basically content that usually drives _flow_ and is normally the form of a stream of readable text, where _hint matter_ is what would interlaced within it or affixed arround it.
+To put this in perspective, we can say _stub matter_ is basically content that usually drives _flow_ and is normally the form of a stream of readable text, where _hint matter_ is what would interlaced within it or affixed around it.
 
 From a design standpoint, it will become more clear as we make progress why it is important to make those kinds of subtle and overgeneralized classifications.
 
@@ -48,15 +57,15 @@ Color choices should prioritize on the overall harmony for _stubs_ and on the re
 
 _Stubs_ primarily deal with one or more dominant _foreground_ color contrasting highly against a solid _background_, ie white on black, or vice versa.
 
-- _Black_ and _White_ here are can just as well be approximations of respectives shades and sometimes even tints, not just pure the `#000000` and `#FFFFFF` ones.
-
-- Our eyes are far more sensitive to this matter because it provides the dominant grays or neutrals that will define what is known as the perceived _white point_ and _color temperature_.
-
-- Perceived color harmony in nested matter requires that all neutrals match closely to the _white point_ and _color temperature_ of more dominant elements — ie the neutral background component introduced by an ancestor and other elements dominating the field of view.
+> _Black_ and _White_ here are can just as well be approximations of respectives shades and sometimes even tints, not just pure the `#000000` and `#FFFFFF` ones.
+>
+> Our eyes are far more sensitive to this matter because it provides the dominant grays or neutrals that will define what is known as the perceived _white point_ and _color temperature_.
+>
+> Perceived color harmony in nested matter requires that all neutrals match closely to the _white point_ and _color temperature_ of more dominant elements — ie the neutral background component introduced by an ancestor and other elements dominating the field of view.
 
 _Hints_ are a much wider spectrum, some merely a dimmed tint of the _foreground_ color, others having their own _foreground_, _outline_ and/or _backdrop_.
 
-- _Backdrop_ here differs from background in the sense that it is sometimes just a banded overlay blending with in with the background of the parent _stub_.
+> _Backdrop_ here differs from background in the sense that it is sometimes just a banded overlay blending with in with the background of the parent _stub_.
 
 #### Additional Considerations
 
@@ -92,3 +101,6 @@ Add screenshot of assets
 | CSS  | Framework 141 KB | Bootstrap 387 KB |
 -->
 
+---
+
+<style>@import "../../.vscode.markdown.css";</style>
