@@ -1,9 +1,0 @@
-@import "../markout/styles/style.css";
-@import "../markout/styles/markout.css";
-
-code.language-tsv code div,
-code.language-log code div {
-	-webkit-tab-size: 12 !important;
-	-moz-tab-size: 12 !important;
-	tab-size: 12 !important;
-}

@@ -66,7 +66,9 @@
 		"*.mout": "markdown",
 		"*.markout": "markdown"
 	},
+	"markdown.extension.showExplorer": true,
+	"markdown.preview.doubleClickToSwitchToEditor": true,
 	"markdown.styles": [
-		// "/Users/daflair/Projects/smotaal.io/pholio/styles/common.css" //
+		".vscode.markdown.css"
 	]
 }
