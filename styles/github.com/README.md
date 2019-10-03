@@ -92,29 +92,3 @@ Add screenshot of assets
 | CSS  | Framework 141 KB | Bootstrap 387 KB |
 -->
 
-<style>@import "../../markout/styles/style.css";</style>
-<style>@import "../../markout/styles/markout.css";</style>
-
-## Improving Odds [#507](https://github.com/nodejs/community-committee/issues/507)
-
-1. Talk about the void
-
-   - _See_ https://insights.stackoverflow.com/survey/2019#developer-profile-_-disability-status
-   - to be addressed in a phase 0 survey
-   - lay grounds for the more realistic specifics of the actual initiative
-   - @dshaw — consider putting out feeler-type questions in the annual Survey
-     - must open an issue
-     - need to clarify on looming deadline
-
-2. Talk about structure
-
-   - a champion backing our early efforts — create an issue including relative time/week
-     - must open an issue
-     - just because of availability/bandwidth it might take more time
-   - bi/weekly Friday 11 AM ET meetings
-   - project board or separate repo
-
-3. Talk about philosophy
-   - Inclusiveness
-   - Acceptance
-   - … not sure what to call it, but 118n related
