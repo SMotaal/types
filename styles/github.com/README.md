@@ -19,7 +19,7 @@ _SCSS_ was initially conceived to close gaps in legacy _CSS_. Browsers have sinc
 
 Senior developers should ask themselves if they are really caught up with the specs. Or, if they are really just happy in a comfort zone of their own choosing. By insisting to opt for abstractions of yesterday, and parroting the wisdom of it, we are perpetuating this façade where you are always right, by show of hand.
 
-But for some who is discovering their own accessibility needs, we cannot always afford to not break away from the pack, because as much as we want to respect rank and tradition, we cannot ignore accessibility aspects that cannot be solved as effectively with all those unnecessary complexities getting in the way.
+But for some who are trying to meet their own accessibility needs, we cannot always afford to not break away from the pack, because as much as we want to respect rank and tradition, we cannot ignore accessibility aspects that cannot be solved as effectively with all those unnecessary complexities getting in the way.
 
 I personally, was an early adopter of Dark Mode, not because it is cool, but because it is a necessity for me to do my work. Having to do all this without _SCSS_ gave me great insights and forced deeper questions of how cascading can be used effectively to **toggle** very specific _CSS_ properties globally.
 
