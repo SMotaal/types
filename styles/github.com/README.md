@@ -15,7 +15,7 @@ Truth be told, you are right, but _SCSS_ is not _CSS_!
 
 _SCSS_ was initially conceived to close gaps in legacy _CSS_. Browsers have since evolved to offer standard _CSS_ alternatives, and all those are being ignored in mainstream due to residual legacy and _best practices_ myth.
 
-> Something to for the reader to ponder, if _SCSS_ was meant to improve development cycles, why is it taking GitHub and many others using it such a long time to add support for Dark Mode.
+> Something for the reader to ponder, if _SCSS_ was meant to improve development cycles, why is it taking GitHub and many others using it such a long time to add support for Dark Mode.
 
 Senior developers should ask themselves if they are really caught up with the specs. Or, if they are really just happy in a comfort zone of their own choosing. By insisting to opt for abstractions of yesterday, and parroting the wisdom of it, we are perpetuating this façade where you are always right, by show of hand.
 
