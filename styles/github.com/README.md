@@ -1,4 +1,4 @@
-﻿<center>
+﻿<div align=center>
 <br/>
 
 # <p>☾</p>Responsive Dark Mode for Github
@@ -11,7 +11,7 @@ h built _CSS_ artifacts instead of patching the _SCSS_ sources…</q>
 Truth be told, you are right, but _SCSS_ is not _CSS_!
 
 <br/>
-</center>
+</div>
 
 _SCSS_ was initially conceived to close gaps in legacy _CSS_. Browsers have since evolved to offer standard _CSS_ alternatives, and all those are being ignored in mainstream due to residual legacy and _best practices_ myth.
 
