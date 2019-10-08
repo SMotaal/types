@@ -18,15 +18,35 @@ typeof document !== 'object' ||
 				// this.span.style.writingMode = 'vertical-rl';
 				// this.span.style.textOrientation = 'upright';
 				this.span.inert = true;
-				this.span.text = this.span.appendChild(new Text(this.labels[undefined]));
+				this.span.text = this.span.attachShadow({mode: 'closed'}).appendChild(new Text(this.labels[undefined]));
 				document.body.appendChild(this.span);
 				// this.target = this.span;
 				this.target = document.body;
-				this.update = threshold =>
-					(threshold = parseFloat(threshold) || 0) === this.threshold ||
-					this.mode === (this.mode = (this.threshold = threshold) > 127 ? 'light' : 'dark') ||
-					console.log(this.mode) ||
-					(this.span.text.textContent = this.labels[this.mode]);
+				this.state = {
+					currentMode: undefined,
+					previousMode: undefined,
+					currentThreshold: undefined,
+					previousThreshold: undefined,
+				};
+				this.update = threshold => {
+					if (
+						(threshold = parseFloat(threshold) || 0) === this.threshold ||
+						this.mode === (this.mode = (this.threshold = threshold) > 127 ? 'light' : 'dark')
+					)
+						return;
+					document.dispatchEvent(
+						new CustomEvent('color-scheme-change', {
+							detail: (this.state = {
+								currentMode: this.mode,
+								previousMode: this.state.currentMode,
+								currentThreshold: this.threshold,
+								previousThreshold: this.state.currentThreshold,
+							}),
+						}),
+					);
+					console.log(this.mode);
+					this.span.text.textContent = this.labels[this.mode];
+				};
 				this.handler = () => {
 					this.target.style.currentColor = this.target.style.color;
 					this.target.style.color = this.color;
