@@ -1,9 +1,8 @@
 ﻿/** @type {{enable(): void; disable(): void; toggle(state?: boolean | 'auto'): void;}} */
-export const darkMode = (document => {
+export const darkMode = (() => {
 	if (!document) return;
 	if (document.darkMode) return document.darkMode;
 
-	const {assign, create, freeze, getOwnPropertyDescriptors} = Object;
 	const classList = document.documentElement.classList;
 
 	// const autoOnly = /#auto-only\b/.test(import.meta.url);
@@ -81,12 +80,10 @@ export const darkMode = (document => {
 		document.body.appendChild(togglerSpan).appendChild(toggler);
 	};
 
-	// toggler.show();
-
-	const darkMode = create(null, {
+	const darkMode = Object.create(null, {
 		state: {writable: true},
 		prefers: {writable: true},
-		...getOwnPropertyDescriptors(freeze({enable, disable, toggle, toggler})),
+		...Object.getOwnPropertyDescriptors(Object.freeze({enable, disable, toggle, toggler})),
 	});
 
 	((prefersDarkMode, prefersLightMode) => {
@@ -103,4 +100,4 @@ export const darkMode = (document => {
 	})(matchMedia('(prefers-color-scheme: dark)'), matchMedia('(prefers-color-scheme: light)'));
 
 	return (document.darkMode = darkMode);
-})(globalThis.document);
+})();
