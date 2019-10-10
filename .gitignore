@@ -13,6 +13,7 @@ trash/
 /pholio
 /quench
 /vscode-frictionless-theme
+/@nodejs
 package-lock.json
 yarn.lock
 
