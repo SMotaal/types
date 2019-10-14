@@ -56,7 +56,7 @@
 				console.warn(message);
 			},
 			dump(reason) {
-				var dumped, message, html, element, format, description, divider;
+				var dumped, message, html, element, format, description, divider, link;
 				reason = runtime.getReason(reason) || '‹unknown›';
 				divider = '—'.repeat(10);
 				format = ['ENVIRONMENT', '', '\t\t%s', divider, '\t\t%s'].join('\n');
@@ -97,7 +97,7 @@
 									'text-align:center;',
 								].join(''),
 							);
-							for (const part of ('Oh No!\n' + divider + '\n' + message).split('\n' + divider + '\n')) {
+							for (const part of ('Oh No!\n\n' + divider + '\n' + message).split('\n' + divider + '\n')) {
 								runtime.container.appendChild(element.cloneNode()).innerText = part;
 								runtime.container.appendChild(self.document.createElement('hr'));
 							}
@@ -106,6 +106,17 @@
 								runtime.container.firstElementChild.getAttribute('style') +
 									';font-weight:bold;text-shadow: 0 1px 1px black;',
 							);
+							if (/i(Phone |Pad |)(?:OS |)(?:1[0-1]|[1-9])/.test(runtime.userAgent)) {
+								runtime.container
+									.insertBefore(
+										self.document.createElement('code'),
+										runtime.container.firstElementChild.nextElementSibling,
+									)
+									.appendChild(self.document.createTextNode('\nYou may need to upgrade to iOS 12 — See '))
+									.parentElement.appendChild((link = self.document.createElement('a')))
+									.appendChild(self.document.createTextNode('Compatible Devices')).parentElement.href =
+									'https://support.apple.com/en-us/HT209051';
+							}
 						} else {
 							element.innerText = description;
 							runtime.container.appendChild(element);
@@ -156,6 +167,7 @@
 				);
 			},
 			userAgent: (self && self.navigator && self.navigator.userAgent && '' + self.navigator.userAgent) || undefined,
+			container: /** @type  {HTMLElement} */ (undefined),
 		};
 
 		runtime.initialize();
