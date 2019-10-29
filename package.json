@@ -10,10 +10,10 @@
 	"exports": {},
 	"scripts": {
 		"bundle": "yarn workspace @smotaal/markup bundle && yarn workspace @smotaal/markout bundle && yarn workspace @smotaal/pholio bundle",
-		"start": "npx http-server -d false --cors -s -c-1 -p 80 -P https://www.smotaal.io/",
-		"serve": "http-server -d false --cors -s -c-1 -p 80 -P https://www.smotaal.io/",
-		"local:cache": "http-server -d false --cors -s -p 80",
+		"start": "npx http-server -d false --cors -s -c-1 -p 80",
+		"remote": "http-server -d false --cors -s -c-1 -p 80 -P https://www.smotaal.io/",
 		"local": "http-server -d false --cors -s -c-1 -p 80",
+		"local:cache": "http-server -d false --cors -s -p 80",
 		"relink": "nex tasks/relink.js",
 		"nes": "pushd $INIT_CWD && nes",
 		"xcode-install": "xcode-select --install",
