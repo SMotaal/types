@@ -2,86 +2,43 @@
 
 # smotaal.io
 
-<h1>
+<h1 hidden display:=block>
 
 **[<kbd>Markup</kbd>](/markup/README)**
 **[<kbd>Markout</kbd>](/markout/README)**
 **[<kbd>Meta</kbd>](/meta/README)**
 **[<kbd>Pholio</kbd>](/pholio/)**
-**[<kbd>Quench</kbd>](/quench/)**
 **[<kbd>Experimental</kbd>](/experimental/ 'Live on the edge!')**
+
+<!-- **[<kbd>Quench</kbd>](/quench/)** -->
 
 </h1>
 
-<!-- <div align=center style="display: grid; grid-gap: 1em; place-content: space-around;"> -->
-<div align=center>
+<aside align=center>
 
-<table width=90%>
+# Hey!
 
-<thead><tr><th colspan=2>
+This is my personal site, which does not really have a homepage. You can look around, but I usually just use this space for direct links to things I'm working on — <cite>[<samp>Saleh</samp>][meta]</cite>
 
-### Changes
+<!-- <markout-details> -->
 
-<tbody>
+[<samp>Contributing</samp>][contributing]
 
-<tr><th><code>0.0.0-alpha.5</code><td>
+[<samp>GitHub</samp>][github]
 
-- Refactor everything markout (into `/markout/…`)
-- Add support for `@media(prefers-color-scheme: dark)`
-- Integrate new Matcher-based ECMAScript tokenizer
+<!-- <markout-details><summary align=center color:=transparent><span color:="var(--markout--band-text, initial)"> -->
 
-<tr><th><code>0.0.0-alpha.4</code><td>
+[<samp>Changelog</samp>][changelog]
 
-- Using all-markout links (ie `/markout/#/…`)
+<!-- </span></summary>
+<markout-iframe src="?embed#CHANGELOG.md" border:=none padding:=0 margin:=0 background:=transparent></markout-iframe>
+</markout-details> -->
 
-<tr><th><code>0.0.0-alpha.3</code><td>
-
-- Using flat structure with `http-server` proxy
-
-<tr><th><code>0.0.0-alpha.2</code><td>
-
-- Using `yarn` workspaces to `../`
-
-<tr><th><code>0.0.0-alpha.1</code><td>
-
-- Using symbolic links to `node_moudles/@smotaal`
-
-</table>
-
-<table width=90%>
-
-<thead><tr><th>
-
-### Development
-
-<tbody><tr><th>
-
-#### Using `npx` without dependencies
-
-<tr><td>
-
-This option is ideal for troubleshooting or local hacking using the `?dev` query to force loading from `…/lib/` folders where you can make all kinds of changes directly at a source level.
-
-1. Clone the repo locally
-2. Clone other repo(s) you need into their respective folder
-3. Run `npm start` or `npx http-server --cors -s -P https://www.smotaal.io/`
-
-<tbody><tr><th>
-
-#### Using `npm` or `yarn` with dependencies
-
-<tr><td>
-
-This option is **required** if you will be updating any of the bundles in the `…/dist/` folders by running `yarn workspace @smotaal/‹workspace› bundle`.
-
-1. Clone the repo locally
-2. Clone other repo(s) if applicable into ./packages
-3. Run `npm run relink`.
-4. Run `npm install` or `yarn`.
-5. Run `npm run serve` or `yarn http-server --cors -s -P https://www.smotaal.io/`.
-
-</table>
+</aside>
 
 </div>
 
-</div>
+[github]: https://www.github.com/smotaal/smotaal.github.io/
+[changelog]: ./CHANGELOG.md
+[contributing]: ./CONTRIBUTING.md
+[meta]: ./meta/README.md
