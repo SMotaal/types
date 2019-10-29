@@ -1,38 +1,62 @@
 ﻿(
 	typeof eval === 'function' &&
-	/** @this {globalThis} this */ function Runtime(/** @type {Console}  */ console) {
-		var Object = /** @type {ObjectConstructor} */ ({}.constructor);
-		function Unsupported() {
+	/** @this {globalThis} this */ function Runtime(/** @type {Partial<Window>} */ endowments) {
+		const {
+			Object = /** @type {ObjectConstructor} */ ({}.constructor),
+			console = /** @type {Console}  */ ((this && this.console) || {
+				error(message) {
+					throw message;
+				},
+			}),
+		} = {
+			...endowments,
+		};
+		// const Object = /** @type {ObjectConstructor} */ ({}.constructor);
+
+		if (
+			(this && '<-- smotaal.io/browser/legacy -->' in this) ||
+			'<-- smotaal.io/browser/legacy -->' in
+				Object.defineProperty(this, '<-- smotaal.io/browser/legacy -->', {
+					writable: false,
+					configurable: false,
+					enumerable: false,
+				})
+		)
+			// Dual instances
+			return void (this.console && this.console.count('<-- smotaal.io/browser/legacy -->'));
+
+		const Unsupported = function Unsupported() {
 			return Reflect.construct(Error, arguments, Unsupported);
-		}
+		};
 
-		Unsupported.prototype = Object.create(Error.prototype, {
-			constructor: {value: Unsupported},
-			type: {value: 'Unsupported'},
-		});
+		Object.setPrototypeOf(
+			(Unsupported.prototype = Object.create(Error.prototype, {
+				constructor: {value: Unsupported},
+				type: {value: 'Unsupported'},
+			})).constructor,
+			Error,
+		);
 
-		Object.setPrototypeOf(Unsupported, Error);
-		if (!this || !(this.globalThis != null || (this.globalThis = this) || this === this.globalThis)) {
+		if (!this || !(this.globalThis != null || (this.globalThis = this) || this === this.globalThis))
 			throw Unsupported('‹global›');
-		} else if (
+		if (
 			!(console || (console = {}.constructor.assign({}, this.console || (1, eval)('console')))) ||
 			typeof console.warn !== 'function' ||
 			typeof console.log !== 'function'
-		) {
+		)
 			throw Unsupported('‹console›');
-		}
 
-		var Promise = /** @type {PromiseConstructor} */ this.Promise;
-		var self = (this === this.self && this.self) || undefined;
+		const Promise = /** @type {PromiseConstructor} */ this.Promise;
+		const self = (this === this.self && this.self) || undefined;
 
-		var runtime = {
+		const runtime = {
 			initialize() {
 				// runtime.legacy = false;
 				if (!('description' in self.Symbol.prototype)) {
 					runtime.legacy = true;
 					runtime.defineProperty(self.Symbol.prototype, 'description', {
 						get() {
-							var error = Unsupported('Symbol.prototype.description');
+							const error = Unsupported('Symbol.prototype.description');
 							error.stack = '';
 							runtime.dump(error);
 						},
@@ -56,7 +80,7 @@
 				console.warn(message);
 			},
 			dump(reason) {
-				var dumped, message, html, element, format, description, divider, link;
+				let dumped, message, html, element, format, description, divider, link;
 				reason = runtime.getReason(reason) || '‹unknown›';
 				divider = '—'.repeat(10);
 				format = ['ENVIRONMENT', '', '\t\t%s', divider, '\t\t%s'].join('\n');
@@ -157,7 +181,7 @@
 			getDescriptor: Object.getOwnPropertyDescriptor,
 			defineProperty: Object.defineProperty,
 			removeSetter(object, property) {
-				var descriptor;
+				let descriptor;
 				return !!(
 					(descriptor = object != null && runtime.getDescriptor(object, property)) &&
 					descriptor.set &&
