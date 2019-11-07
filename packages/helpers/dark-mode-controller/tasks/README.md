@@ -13,3 +13,5 @@
 - https://help.github.com/en/github/managing-packages-with-github-package-registry/configuring-npm-for-use-with-github-package-registry
 
 - https://gemfury.com/help/private-yarn/
+
+- https://github.com/yarnpkg/yarn/issues/7552#issuecomment-538376858
