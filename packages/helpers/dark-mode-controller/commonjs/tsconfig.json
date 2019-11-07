@@ -1,0 +1,12 @@
+{
+	"$schema": "http://json.schemastore.org/tsconfig",
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"module": "commonjs",
+		"noEmit": false,
+		"outDir": "./",
+		"tsBuildInfoFile": "tsbuildinfo.json"
+	},
+	"references": [{"path": "../types/"}]
+}

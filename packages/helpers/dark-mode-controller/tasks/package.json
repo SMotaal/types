@@ -1,0 +1,13 @@
+{
+	"private": true,
+	"name": "@smotaal/dark-mode-controller-tasks",
+	"type": "module",
+	"scripts": {
+		"prepackage": "[ -d packages ] || mkdir packages",
+		"package": "pushd packages && npm pack ../..",
+		"compile:root": "tsc -p ../tsconfig.json",
+		"compile:types": "tsc -p ../types/tsconfig.json",
+		"compile:commonjs": "tsc -p ../commonjs/tsconfig.json",
+		"compile": "tsc -b ../tsconfig.json --listEmittedFiles"
+	}
+}

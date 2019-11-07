@@ -1,0 +1,16 @@
+{
+	"name": "@smotaal/dark-mode-controller",
+	"version": "0.0.2",
+	"description": "Reusable controller for Enhanced Dark Mode support via `prefers-color-scheme` media queries.",
+	"author": "Saleh Abdel Motaal <saleh@smotaal.io>",
+	"license": "MIT",
+	"module": "./dark-mode-controller.js",
+	"main": "./commonjs/dark-mode-controller.js",
+	"types": "./dark-mode-controller.d.ts",
+	"type": "module",
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"repository": "https://github.com/SMotaal/smotaal.github.io.git",
+	"homepage": "https://smotaal.github.io/tree/staging/packages/helpers/dark-mode-controller/#readme"
+}
