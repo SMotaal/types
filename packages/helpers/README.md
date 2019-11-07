@@ -18,7 +18,9 @@ A refactor of the initial `dark-mode` implementation was needed for the new [@no
 
 - Putting GPR to the test:
 
-  - Pitfall: needs `.npmrc` to divert to the GPR registry along with a GitHub `packages:read` personal access token required a lot of "luck" to get `yarn` to work as needed.
+  - Pitfall: needs `.npmrc` to divert to the GPR registry along with a GitHub `read:packages` personal access token required a lot of "luck" to get `yarn` to work as needed.
+
+  - Pitfall: needs `yarn cache clean` and `yarn --update-checksums` if you installed from `tarball` prior to publishing.
 
 - Putting the frictionless philosophy in effect:
 
