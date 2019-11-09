@@ -2,6 +2,9 @@
 	"private": true,
 	"name": "@smotaal/dark-mode-controller-tasks",
 	"type": "module",
+	"devDependencies": {
+		"tsc": "*",
+	},
 	"scripts": {
 		"prepackage": "[ -d packages ] || mkdir packages",
 		"package": "pushd packages && npm pack ../..",
