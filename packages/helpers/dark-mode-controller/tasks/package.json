@@ -4,6 +4,7 @@
 	"type": "module",
 	"devDependencies": {
 		"tsc": "*",
+		"rollup": "*"
 	},
 	"scripts": {
 		"prepackage": "[ -d packages ] || mkdir packages",
@@ -11,6 +12,7 @@
 		"compile:root": "tsc -p ../tsconfig.json",
 		"compile:types": "tsc -p ../types/tsconfig.json",
 		"compile:commonjs": "tsc -p ../commonjs/tsconfig.json",
-		"compile": "tsc -b ../tsconfig.json --listEmittedFiles"
+		"compile": "tsc -b ../tsconfig.json --listEmittedFiles",
+		"postcompile": "rollup -c ./rollup.config.js"
 	}
 }
