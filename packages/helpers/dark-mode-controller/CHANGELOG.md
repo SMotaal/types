@@ -2,6 +2,30 @@
 
 ## [staging]
 
+## [0.0.3] - 2019-11-09
+
+### Added
+
+- Helper `@smotaal.io/browser/dark-mode.js`.
+
+### Fixed
+
+- Auto-toggling failing due to bad matching expressions.
+
+### Meta
+
+**Development Only**
+
+- Added `tsc` and `rollup` as `devDependencies` in `tasks.
+- Added internal helper bundle for `smotaal.io/browser/dark-mode.js`.
+- Added internal helper bundle for `smotaal.io/browser/dark-mode.js`.
+
+---
+
+> **Important Note** — Starting from 0.0.2 publishing switched from GPR `@smotaal/dark-mode-controller` to NPM `@smotaal.io/dark-mode-controller`
+
+---
+
 ## [0.0.2] - 2019-11-07
 
 ### Added
@@ -30,3 +54,4 @@
 [staging]: https://github.com/SMotaal/smotaal.github.io/tree/staging/packages/helpers/dark-mode-controller/
 [0.0.1]: https://github.com/SMotaal/smotaal.github.io/packages/50383?version=0.0.1
 [0.0.2]: https://github.com/SMotaal/smotaal.github.io/packages/50383?version=0.0.2
+[0.0.3]: https://www.npmjs.com/package/@smotaal.io/dark-mode-controller/v/0.0.3
