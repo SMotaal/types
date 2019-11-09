@@ -433,7 +433,7 @@ class DarkModeController {
   static get matchTrigger() {
     // We want this to return undefined if it does not match
     const value = DarkModeController.createMatcher(
-      /(^mouseup$|^mousedown$|^pointerup$|^pointerdown$|\blight\b|\bdark\b)|/i,
+      /(^mouseup$|^mousedown$|^pointerup$|^pointerdown$|\blight\b|\bdark\b)|$/i,
     );
     Object.defineProperty(DarkModeController, 'matchTrigger', {
       value,
@@ -444,7 +444,7 @@ class DarkModeController {
 
   static get matchID() {
     // We want this to return empty string if match
-    const value = DarkModeController.createMatcher(/(^\S{2,}$|)/);
+    const value = DarkModeController.createMatcher(/(^\S{2,}$|$)/);
     Object.defineProperty(DarkModeController, 'matchID', {
       value,
       writable: false,
@@ -454,7 +454,7 @@ class DarkModeController {
 
   static get matchScope() {
     // We want this to return empty string if match
-    const value = DarkModeController.createMatcher(/(^\S{2,}$|)/);
+    const value = DarkModeController.createMatcher(/(^\S{2,}$|$)/);
     Object.defineProperty(DarkModeController, 'matchScope', {
       value,
       writable: false,
