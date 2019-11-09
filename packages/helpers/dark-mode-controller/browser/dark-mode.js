@@ -7,5 +7,5 @@ export const darkMode =
 		//@ts-ignore
 		(document.darkMode ||
 			//@ts-ignore
-			(document.darkMode = new (Object.preventExtensions(DarkModeController))()))) ||
+			(document.darkMode = new (Object.preventExtensions(DarkModeController))(document.documentElement)))) ||
 	undefined;
