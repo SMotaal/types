@@ -15,6 +15,7 @@ trash/
 /pholio
 /quench
 /vscode-frictionless-theme
+/*.tgz
 package-lock.json
 yarn.lock
 

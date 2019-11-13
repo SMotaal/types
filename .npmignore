@@ -11,4 +11,3 @@ meta/
 **/tsconfig.json
 **/tsbuildinfo.json
 **/*.tsbuildinfo
-tasks/

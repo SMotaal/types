@@ -20,6 +20,7 @@
     "n": "NODE_MIRROR=https://nodejs.org/download/nightly/ n"
   },
   "devDependencies": {
+    "@smotaal.io/prettier.config": "*",
     "@types/node": "*",
     "http-server": "*",
     "prettier": "*",
@@ -33,6 +34,7 @@
     "SMotaal/markup": "./markup",
     "@smotaal/tokenizer": "./markup/packages/tokenizer",
     "pseudom": "./markup/packages/pseudom",
+    "@smotaal.io/prettier.config": "./packages/tools/prettier.config"
   },
   "projects": {
     "SMotaal/components": "./components",
