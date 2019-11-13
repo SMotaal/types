@@ -1,5 +1,5 @@
 {
-	"private": true,
-	"main": "./dark-mode-controller.js",
-	"type": "commonjs"
+  "private": true,
+  "main": "./dark-mode-controller.js",
+  "type": "commonjs"
 }
