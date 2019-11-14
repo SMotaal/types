@@ -1,6 +1,10 @@
 ﻿# Change Log
 
-## [staging]
+## [0.0.4] - 2019-11-09
+
+### Changed
+
+- Updated `homepage` to point to `master` branch — `staging` is no longer used.
 
 ## [0.0.3] - 2019-11-09
 
@@ -55,3 +59,4 @@
 [0.0.1]: https://github.com/SMotaal/smotaal.github.io/packages/50383?version=0.0.1
 [0.0.2]: https://github.com/SMotaal/smotaal.github.io/packages/50383?version=0.0.2
 [0.0.3]: https://www.npmjs.com/package/@smotaal.io/dark-mode-controller/v/0.0.3
+[0.0.4]: https://www.npmjs.com/package/@smotaal.io/dark-mode-controller/v/0.0.4
