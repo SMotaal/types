@@ -1,32 +1,31 @@
 ﻿{
-	"compilerOptions": {
-		"module": "esnext",
-		"target": "esnext",
-		// "jsx": "preserve",
-		// "checkJs": false,
-		"keyofStringsOnly": false,
-		"noEmit": true,
-		"rootDir": ".",
-		"baseUrl": ".",
-		"paths": {
-			"/packages/specs/*": ["/specs/*"],
-			"/packages/markout/*": ["/markout/*"],
-			"@smotaal/matcher": ["/markup/packages/matcher"],
-			"/*": ["*"]
-		},
-		"forceConsistentCasingInFileNames": true,
-		"skipDefaultLibCheck": true,
-		"skipLibCheck": true
-	},
-	"exclude": [
-		"node_modules",
-		"**/node_modules/*",
-		"trash",
-		"**/trash/*",
-		"[[]trash[]]",
-		"**/[[]trash[]]/*",
-		"[[]more[]]",
-		"**/[[]more[]]/*",
-		"@*"
-	]
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    // "jsx": "preserve",
+    // "checkJs": false,
+    "keyofStringsOnly": false,
+    "noEmit": true,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "/packages/markout/*": ["/markout/*"],
+      "@smotaal/matcher": ["/markup/packages/matcher"],
+      "/*": ["*"]
+    },
+    "forceConsistentCasingInFileNames": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*",
+    "trash",
+    "**/trash/*",
+    "[[]trash[]]",
+    "**/[[]trash[]]/*",
+    "[[]more[]]",
+    "**/[[]more[]]/*",
+    "@*"
+  ]
 }
