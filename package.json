@@ -14,27 +14,34 @@
     "remote": "http-server -d false --cors -s -c-1 -p 80 -P https://www.smotaal.io/",
     "local": "http-server -d false --cors -s -c-1 -p 80",
     "local:cache": "http-server -d false --cors -s -p 80",
-    "relink": "nex tasks/relink.js",
     "nes": "pushd $INIT_CWD && nes",
     "xcode-install": "xcode-select --install",
     "n": "NODE_MIRROR=https://nodejs.org/download/nightly/ n"
   },
   "devDependencies": {
-    "@smotaal.io/prettier.config": "*",
+    "@smotaal.io/tools": "*",
     "@types/node": "*",
     "http-server": "*",
     "prettier": "*",
     "rollup": "*",
-    "typescript": "*",
+    "typescript": "*"
+  },
+  "devDependencies.ignored": {
+    "@smotaal.io/tools": "*",
     "@smotaal/esm": "SMotaal/esm"
   },
   "resolutions": {
-    "@smotaal/esm": "./esm",
-    "SMotaal/esm": "./esm",
     "SMotaal/markup": "./markup",
     "@smotaal/tokenizer": "./markup/packages/tokenizer",
     "pseudom": "./markup/packages/pseudom",
+    "@smotaal.io/tools": "./packages/tools",
+    "@smotaal.io/build": "./packages/tools/build",
+    "@smotaal.io/test": "./packages/tools/test",
     "@smotaal.io/prettier.config": "./packages/tools/prettier.config"
+  },
+  "resolutions.ignored": {
+    "@smotaal/esm": "./esm",
+    "SMotaal/esm": "./esm"
   },
   "projects": {
     "SMotaal/components": "./components",
@@ -56,9 +63,8 @@
       "markup",
       "pholio",
       "quench",
-      "tasks",
-      "tests",
-      "packages/tools/prettier.config"
+      "packages/tools",
+      "packages/tools/*"
     ],
     "nohoist": [
       "**/pseudom"

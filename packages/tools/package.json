@@ -1,0 +1,23 @@
+{
+  "name": "@smotaal.io/tools",
+  "displayName": "SMotaal's Frictionless Tools",
+  "version": "0.0.1",
+  "description": "Frictionlessly opinionated tools used across smotaal.io and related projects",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@smotaal.io/tools": "*",
+    "@smotaal.io/build": "*",
+    "@smotaal.io/test": "*",
+    "rollup": "*",
+    "typescript": "*",
+    "prettier": "*"
+  },
+  "files": [
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

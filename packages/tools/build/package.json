@@ -1,0 +1,17 @@
+{
+  "name": "@smotaal.io/build",
+  "displayName": "SMotaal's Frictionless Build Tools",
+  "version": "0.0.1",
+  "description": "Frictionlessly opinionated build tools",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "rollup": "*",
+    "typescript": "*",
+    "prettier": "*",
+    "@smotaal.io/prettier.config": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
