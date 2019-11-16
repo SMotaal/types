@@ -9,6 +9,7 @@
   "type": "module",
   "exports": {},
   "scripts": {
+    "prebundle": "tsc -b ./packages/tsconfig.json --listEmittedFiles",
     "bundle": "yarn workspace @smotaal/markup bundle && yarn workspace @smotaal/markout bundle && yarn workspace @smotaal/pholio bundle",
     "start": "npx http-server -d false --cors -s -c-1 -p 80",
     "remote": "http-server -d false --cors -s -c-1 -p 80 -P https://www.smotaal.io/",
@@ -18,6 +19,11 @@
     "xcode-install": "xcode-select --install",
     "n": "NODE_MIRROR=https://nodejs.org/download/nightly/ n"
   },
+  "files": [
+    ".nojekyll",
+    "fonts",
+    "browser"
+  ],
   "devDependencies": {
     "@smotaal.io/tools": "*",
     "@types/node": "*",
