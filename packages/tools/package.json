@@ -6,7 +6,7 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "@smotaal.io/pretttier.config": "*",
+    "@smotaal.io/prettier.config": "*",
     "rollup": "*",
     "typescript": "*",
     "prettier": "*"
