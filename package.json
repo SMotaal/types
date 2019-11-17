@@ -9,7 +9,7 @@
   "type": "module",
   "exports": {},
   "scripts": {
-    "prebundle": "tsc -b ./packages/tsconfig.json --listEmittedFiles",
+    "prebundle": "tsc -b ./packages/tsconfig.build.json --listEmittedFiles",
     "bundle": "yarn workspace @smotaal/markup bundle && yarn workspace @smotaal/markout bundle && yarn workspace @smotaal/pholio bundle",
     "start": "npx http-server -d false --cors -s -c-1 -p 80",
     "remote": "http-server -d false --cors -s -c-1 -p 80 -P https://www.smotaal.io/",

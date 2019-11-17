@@ -6,7 +6,10 @@
     // "checkJs": false,
     "keyofStringsOnly": false,
     "noEmit": true,
-    "rootDir": ".",
+    "rootDirs": [
+      ".",
+      "./packages/"
+    ],
     "baseUrl": ".",
     "paths": {
       "/packages/markout/*": ["/markout/*"],
