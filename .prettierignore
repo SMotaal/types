@@ -1,1 +1,4 @@
-.npmignore
+**/trash/
+**/dist/
+**/.git/
+**/.cache/
