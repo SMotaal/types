@@ -1,7 +1,8 @@
 {
   "search.exclude": {
-    "packages/specs": true,
+    "meta/logs/2*/2*/": true,
     "packages/markout": true,
+    "packages/markie": true,
     "components": false,
     "console": false,
     "esm": false,
@@ -19,8 +20,8 @@
     "**/[trash]": true,
     "**/.git": true
   },
+  "search.useIgnoreFiles": true,
   "files.watcherExclude": {
-    "packages/specs": true,
     "packages/markout": true,
     "components": false,
     "console": false,
@@ -39,28 +40,10 @@
     "**/dist": true,
     "**/[more]": true
   },
-  "files.exclude": {
-    "components": false,
-    "console": false,
-    "esm": false,
-    "experimental": false,
-    "helpers": false,
-    "markup": false,
-    "pholio": false,
-    "quench": false
-  },
+  "files.exclude": {},
   "explorer.decorations.colors": false,
   "git.autoRepositoryDetection": true,
-  "git.scanRepositories": [
-    "console",
-    "components",
-    "esm",
-    "experimental",
-    "markout",
-    "markup",
-    "pholio",
-    "quench"
-  ],
+  "git.scanRepositories": ["console", "components", "esm", "experimental", "markout", "markup", "pholio", "quench"],
   "cSpell.words": ["interop"],
   "cSpell.enabled": true,
   "cSpell.enabledLanguageIds": ["html", "markdown"],
@@ -78,6 +61,23 @@
   "markdown.extension.showExplorer": true,
   "markdown.preview.doubleClickToSwitchToEditor": true,
   "markdown.styles": [".vscode.markdown.css"],
-  "prettier.configPath": "${workspaceRoot}/packages/tools/prettier.config/.prettierrc.json",
-  "editor.tabSize": 2
+  // "prettier.configPath": "${workspaceRoot}/packages/tools/prettier.config/.prettierrc.json",
+  "editor.tabSize": 2,
+  "npm.packageManager": "yarn",
+  "npm.scriptExplorerAction": "run",
+  "npm.enableRunFromFolder": true,
+  "npm.autoDetect": "on",
+  "terminal.integrated.experimentalUseTitleEvent": true,
+  "terminal.integrated.experimentalRefreshOnResume": true,
+  "workbench.view.alwaysShowHeaderActions": false,
+  "workspace.exclude": {
+    "components": false,
+    "console": false,
+    "esm": false,
+    "experimental": false,
+    "helpers": false,
+    "markup": false,
+    "pholio": false,
+    "quench": false
+  }
 }
