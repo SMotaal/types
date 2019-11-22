@@ -11,6 +11,6 @@
   "repository": "https://github.com/SMotaal/smotaal.github.io.git",
   "homepage": "https://github.com/SMotaal/smotaal.github.io/tree/master/packages/helpers/dark-mode-controller/#readme",
   "devDependencies": {
-    "@smotaal.io/prettier.config": "*"
+    "@smotaal.io/tools": "*"
   }
 }

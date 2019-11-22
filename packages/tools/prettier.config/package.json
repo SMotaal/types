@@ -1,14 +1,12 @@
 {
-  "private": false,
-  "name": "@smotaal.io/prettier.config",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "My personal Prettier config",
   "author": "Saleh Abdel Motaal <saleh@smotaal.io>",
   "license": "MIT",
   "repository": "https://github.com/SMotaal/smotaal.github.io.git",
   "main": "./.prettierrc.json",
   "homepage": "https://github.com/SMotaal/smotaal.github.io/tree/master/packages/tools/prettier.config",
-  "publishConfig": {
-    "access": "public"
-  }
+  "files": [
+    ".prettierrc.json"
+  ]
 }

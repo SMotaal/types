@@ -9,7 +9,7 @@
     "rollup": "*",
     "typescript": "*",
     "prettier": "*",
-    "@smotaal.io/prettier.config": "*"
+    "@smotaal.io/tools": "*"
   },
   "publishConfig": {
     "access": "public"

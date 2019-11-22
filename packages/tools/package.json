@@ -1,19 +1,19 @@
 {
   "name": "@smotaal.io/tools",
   "displayName": "SMotaal's Frictionless Tools",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Frictionlessly opinionated tools used across smotaal.io and related projects",
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "@smotaal.io/prettier.config": "*",
     "rollup": "*",
     "typescript": "*",
     "prettier": "*"
   },
   "files": [
     "README.md",
-    "package.json"
+    "package.json",
+    "prettier.config"
   ],
   "publishConfig": {
     "access": "public"
