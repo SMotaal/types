@@ -3,13 +3,16 @@
   "name": "@smotaal/smotaal.io",
   "description": "smotaal.io",
   "version": "0.0.0-alpha.4",
-  "author": "Saleh Abdel Motaal <saleh@grasppe.com>",
+  "author": "Saleh Abdel Motaal <saleh@smotaal.io>",
   "repository": "https://github.com/SMotaal/smotaal.github.io.git",
   "license": "MIT",
   "type": "module",
   "exports": {},
   "scripts": {
+    "prepare": "node -e \"$npm_package_scripts_prepare_node\"",
+    "prepare@node": "child_process.exec('npm ls --json').stdout.pipe(fs.createWriteStream('packages.json', {flags: 'w'})) && console.info('✲ Updating %O', 'packages.json');",
     "prebundle": "tsc -b ./packages/tsconfig.build.json --listEmittedFiles",
+    "env": "env",
     "bundle": "yarn workspace @smotaal/markup bundle && yarn workspace @smotaal/markout bundle && yarn workspace @smotaal/pholio bundle",
     "start": "npx http-server -d false --cors -s -c-1 -p 80",
     "remote": "http-server -d false --cors -s -c-1 -p 80 -P https://www.smotaal.io/",
@@ -30,22 +33,23 @@
     "http-server": "*",
     "prettier": "*",
     "rollup": "*",
-    "typescript": "*"
+    "typescript": "3.7.1-rc"
   },
   "devDependencies.ignored": {
     "@smotaal.io/tools": "*",
     "@smotaal/esm": "SMotaal/esm"
   },
-  "resolutions": {
+  "resolutions": {},
+  "resolutions.ignored": {
     "SMotaal/markup": "./markup",
     "@smotaal/tokenizer": "./markup/packages/tokenizer",
     "pseudom": "./markup/packages/pseudom",
+    "@smotaal.io/common": "./packages/common",
+    "@smotaal.io/browser": "./packages/browser",
     "@smotaal.io/tools": "./packages/tools",
     "@smotaal.io/build": "./packages/tools/build",
     "@smotaal.io/test": "./packages/tools/test",
-    "@smotaal.io/prettier.config": "./packages/tools/prettier.config"
-  },
-  "resolutions.ignored": {
+    "@smotaal.io/prettier": "./packages/tools/prettier",
     "@smotaal/esm": "./esm",
     "SMotaal/esm": "./esm"
   },
@@ -69,6 +73,8 @@
       "markup",
       "pholio",
       "quench",
+      "packages/browser",
+      "packages/common",
       "packages/tools",
       "packages/tools/*"
     ],
