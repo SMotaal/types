@@ -54,8 +54,6 @@ If you are going to be building, make sure you cover the previous section to set
 
 4. If not, feel free to open one.
 
-[smotaal.github.io`@staging`]:
 [smotaal.github.io/issues]: https://github.com/SMotaal/smotaal.github.io/issues/
 [components]: https://github.com/SMotaal/components/
 [markup]: https://github.com/SMotaal/markup/
-[…]: https://github.com/SMotaal/
