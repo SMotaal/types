@@ -61,7 +61,6 @@
   "markdown.extension.showExplorer": true,
   "markdown.preview.doubleClickToSwitchToEditor": true,
   "markdown.styles": [".vscode.markdown.css"],
-  // "prettier.configPath": "${workspaceRoot}/packages/tools/prettier.config/.prettierrc.json",
   "editor.tabSize": 2,
   "npm.packageManager": "yarn",
   "npm.scriptExplorerAction": "run",
