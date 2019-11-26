@@ -6,10 +6,8 @@
     // "checkJs": false,
     "keyofStringsOnly": false,
     "noEmit": true,
-    "rootDirs": [
-      ".",
-      "./packages/"
-    ],
+    "rootDir": ".",
+    "rootDirs": [".", "./packages"],
     "baseUrl": ".",
     "paths": {
       "/packages/markout/*": ["/markout/*"],
@@ -29,6 +27,10 @@
     "**/[[]trash[]]/*",
     "[[]more[]]",
     "**/[[]more[]]/*",
+    "[trash]",
+    "**/[trash]/*",
+    "[more]",
+    "**/[more]/*",
     "@*"
   ]
 }
