@@ -38,6 +38,7 @@ This is my personal site, which does not really have a homepage. You can look ar
 
 </div>
 
+[package:repository]: https://github.com/SMotaal/smotaal.github.io/
 [github]: https://www.github.com/smotaal/smotaal.github.io/
 [changelog]: ./CHANGELOG.md
 [contributing]: ./CONTRIBUTING.md
