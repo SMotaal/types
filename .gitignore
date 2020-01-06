@@ -15,6 +15,7 @@ trash/
 /meta
 /pholio
 /quench
+/specs
 /vscode-frictionless-theme
 /*.tgz
 package-lock.json
