@@ -8,6 +8,7 @@ trash/
 /console
 /esm
 /experimental
+/experimental-wasm
 /experimental-modules-shim
 /helpers
 /markup
