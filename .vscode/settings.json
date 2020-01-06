@@ -3,6 +3,7 @@
     "meta/logs/2*/2*/": true,
     "packages/markout": true,
     "packages/markie": true,
+    "packages/specs": true,
     "components": false,
     "console": false,
     "esm": false,
