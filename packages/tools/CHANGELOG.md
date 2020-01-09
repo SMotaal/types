@@ -1,8 +1,16 @@
 ﻿# Change Log
 
-## [0.0.3][] — `unreleased`
+## [0.0.4][] — 2020-01-09
 
-> **Release** — `@smotaal.io/tools@0.0.2`
+> **Intended Release** — `@smotaal.io/tools@0.0.4`
+
+### Added
+
+- New `typescript` project configuration & helpers — [changelog](./typescript/CHANGELOG.md#0.0.1).
+
+## [0.0.3][] — 2019-11-26
+
+> **Intended Release** — `@smotaal.io/tools@0.0.3`
 
 ### Added
 
@@ -14,7 +22,7 @@
 
 ## [0.0.2][] - 2019-11-22
 
-> **Release** — `@smotaal.io/tools@0.0.2`
+> **Intended Release** — `@smotaal.io/tools@0.0.2`
 
 ### Added
 
@@ -22,10 +30,11 @@
 
 ## [0.0.1][] — 2019-11-15
 
-> **Release** — `@smotaal.io/tools@0.0.1`
+> **Intended Release** — `@smotaal.io/tools@0.0.1`
 
 - Initial [`README.md`](./README.md) and `package.json`.
 
+[0.0.4]: https://www.npmjs.com/package/@smotaal.io/tools/v/0.0.4
 [0.0.3]: https://www.npmjs.com/package/@smotaal.io/tools/v/0.0.3
 [0.0.2]: https://www.npmjs.com/package/@smotaal.io/tools/v/0.0.2
 [0.0.1]: https://www.npmjs.com/package/@smotaal.io/tools/v/0.0.1

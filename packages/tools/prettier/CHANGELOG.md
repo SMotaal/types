@@ -1,8 +1,11 @@
 ﻿# Change Log
 
-## [0.0.2][] — `unreleased`
+## [0.0.2][] — 2019-11-25
 
-> **Release** — `@smotaal.io/prettier@0.0.2`
+> **Intended Releases**
+>
+> — `@smotaal.io/prettier@0.0.2`
+> — `@smotaal.io/tools@0.0.3`
 
 ### Changed
 
@@ -16,7 +19,10 @@
 
 ## [0.0.1][] - 2019-11-08
 
-> **Release** — `@smotaal.io/prettier.config@0.0.1`
+> **Intended Releases**
+>
+> — `@smotaal.io/prettier.config@0.0.1`
+> — `@smotaal.io/tools@0.0.1`
 
 ### Added
 
@@ -26,5 +32,5 @@
 
 ---
 
-<!-- [0.0.2]: https://www.npmjs.com/package/@smotaal.io/prettier/v/0.0.2 -->
+[0.0.2]: https://www.npmjs.com/package/@smotaal.io/prettier/v/0.0.2
 [0.0.1]: https://www.npmjs.com/package/@smotaal.io/prettier.config/v/0.0.1

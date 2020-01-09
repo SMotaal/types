@@ -2,7 +2,10 @@
 
 ## [0.0.1][] — `unreleased`
 
-> **Release** — `@smotaal.io/rollup@0.0.1`
+> **Intended Releases**
+>
+> — `@smotaal.io/rollup@0.0.1`
+> — `@smotaal.io/tools@0.0.3`
 
 ### Added
 
