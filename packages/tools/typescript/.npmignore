@@ -1,0 +1,16 @@
+.*
+specs/
+docs/
+meta/
+experiments/
+**/*.psd
+**/*.tgz
+**/*.visx
+**/trash/
+**/.DS_Store
+.*/**
+**/tsconfig.json
+**/tsconfig.*.json
+**/jsconfig.json
+**/tsbuildinfo.json
+**/*.tsbuildinfo
