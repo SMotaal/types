@@ -2,6 +2,10 @@
 
 This is my personal website, so if you are wanting to contribute, you are awesome… thanks!
 
+> **Critical** — This document may not be up-to-date!
+>
+> Markout and other aspects of my site are currently being refactored into a separate open source framework in [out•mark](https://github.com/outmark/).
+
 ## Getting Started
 
 There are a number of separate repositories, each bring something to https://smotaal.io and so you might want to connect if you are not sure where to dive.
@@ -10,18 +14,17 @@ There are a number of separate repositories, each bring something to https://smo
 
 You might want to start here if you will be doing work that involves building. If not, you might want to skip it.
 
-1. Clone [SMotaal/smotaal.github.io`@staging`](https://github.com/SMotaal/smotaal.github.io/tree/staging/) which includes the root workspace setup.
+1. Clone [SMotaal/smotaal.github.io`@master`](https://github.com/SMotaal/smotaal.github.io/tree/master/) which includes the root workspace setup.
 
 2. Clone [SMotaal/components](https://github.com/SMotaal/components/) and [SMotaal/markup](https://github.com/SMotaal/markup/) into their respective folders.
 
 **When you are done, your folder structure will look something like:**
 
 ```
-~/                                      [@staging]
-  packages/
-           markout/
-                   dist/                <- critical
-                   lib/
+~/                                      [@master]
+  markout/
+          dist/                         <- critical
+          lib/                          <- in ?dev mode
 
   markup/                               [markup@master]
          dist/                          <- critical
@@ -29,8 +32,6 @@ You might want to start here if you will be doing work that involves building. I
   components/                           [components@master]
          lib/                           <- critical
 ```
-
-If you are working on `markup` or `components` you might want to switch to `@staging` and to make sure you base all `@feature-…` branches off it.
 
 ### Cloning Separate Repositories
 
