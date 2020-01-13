@@ -53,6 +53,7 @@ class Resolver {
   constructor(overrides) {
     this.root = undefined;
     this.scopes = undefined;
+    this.fallbacks = undefined;
     this.logging = undefined;
 
     new.target.initialize(this, overrides);
@@ -91,16 +92,24 @@ class Resolver {
           // path.startsWith('../') ? path.slice(2) : specifier
         }`
       : `${new URL(path, base)}`.replace(/^file:\/\/+/, '/');
-    return {specifier, referrer, id, external, absolute, relative, scoped, bundled, stats};
+    return {specifier, referrer, id, external, absolute, relative, scoped, bundled, stats, scope, scopedId};
   }
 
   resolveId(context, specifier, referrer) {
     let returned, resolution;
     try {
-      const {id, external, absolute} = (resolution = this.resolveScope(context, specifier, referrer));
-      if (referrer && external) return (returned = {external, id});
-      if (id !== specifier) return (returned = {id});
-      return (returned = null);
+      resolution = this.resolveScope(context, specifier, referrer);
+      context &&
+        resolution.scoped &&
+        ((context[Resolver.resolutions] || (context[Resolver.resolutions] = {scoped: {}})).scoped[
+          resolution.id
+        ] = context[Resolver.resolutions].scoped[`${resolution.scope}/${resolution.scopedId}`] = resolution);
+      return (returned =
+        referrer && resolution.external
+          ? {external: resolution.external, id: resolution.id}
+          : resolution.id !== specifier
+          ? {id: resolution.id}
+          : null);
     } finally {
       if (this.logging > 0) {
         if (this.logging === 1) {
@@ -120,6 +129,36 @@ class Resolver {
           }
           console.groupEnd();
         }
+      }
+    }
+  }
+
+  async read(asyncReadable) {
+    const chunks = [];
+    for await (const chunk of asyncReadable) chunks.push(chunk);
+    return chunks.join('');
+  }
+
+  load(context, id) {
+    if (this.fallbacks && !require('fs').existsSync(id)) {
+      const scoped = context[Resolver.resolutions].scoped[id];
+      const fallback = scoped && this.fallbacks[scoped.scope] && `${this.fallbacks[scoped.scope]}${scoped.scopedId}`;
+      // console.log({...this}, {id, fallback}, scoped);
+      if (fallback) {
+        return new Promise((resolve, reject) => {
+          require('https')
+            .get(fallback, response => {
+              if (response.statusCode !== 200)
+                return reject(
+                  response.statusMessage || `Failed to load: ${response.url} [statusCode = ${response.statusCode}]`,
+                );
+
+              this.read(response)
+                .then(resolve)
+                .catch(reject);
+            })
+            .on('error', reject);
+        });
       }
     }
   }
@@ -156,6 +195,8 @@ class Resolver {
     Object.assign(instance, overrides);
   }
 }
+
+Resolver.resolutions = Symbol('resolutions');
 
 exports.Resolver = Resolver;
 

@@ -1,5 +1,13 @@
 ﻿# Changelog
 
+## [0.0.5][] — `unreleased`
+
+> **Intended Release** — `@smotaal.io/tools@0.0.5`
+
+### Changed
+
+- Updated `@smotaal.io/rollup@0.0.2`
+
 ## [0.0.4][] — 2020-01-09
 
 > **Intended Release** — `@smotaal.io/tools@0.0.4`
