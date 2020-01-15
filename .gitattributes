@@ -1,6 +1,0 @@
-# Auto detect text files and perform LF normalization
-* text=auto
-*.mo linguist-language=Markdown
-*.mout linguist-language=Markdown
-*.markout linguist-language=Markdown
-*.mdml linguist-language=Markdown

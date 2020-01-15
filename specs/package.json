@@ -1,18 +1,15 @@
 {
   "private": true,
-  "name": "@smotaal.io/types",
-  "types": "./index.d.ts",
+  "name": "@smotaal.io/types.specs",
   "version": "0.0.1",
   "type": "module",
   "exports": {},
   "scripts": {
-    "typecheck": "./tasks/typecheck.sh -b ."
+    "typecheck": "../tasks/typecheck.sh -p ./ --noEmit"
   },
   "dependencies": {},
   "devDependencies": {
+    "@smotaal.io/types": "../",
     "typescript": "*"
-  },
-  "resolutions": {
-    "@smotaal.io/types": "./"
   }
 }
