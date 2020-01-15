@@ -1,0 +1,5 @@
+﻿{
+  "extends": "../tsconfig.json",
+  "files": ["./index.d.ts"],
+  "references": [{"path": "../common"}]
+}
